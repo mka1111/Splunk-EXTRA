@@ -5,3 +5,31 @@ not in lookup but wiht command format na koncu lukapa sprawdz po co.
 https://community.splunk.com/t5/Splunk-Search/how-to-whitelist-using-lookup-table/m-p/387630
 
 
+
+Answers
+
+162
+
+Found these Python one liners that do what you want:
+
+Python2
+$ alias urldecode='python -c "import sys, urllib as ul; \
+    print ul.unquote_plus(sys.argv[1])"'
+
+$ alias urlencode='python -c "import sys, urllib as ul; \
+    print ul.quote_plus(sys.argv[1])"'
+Python3
+$ alias urldecode='python3 -c "import sys, urllib.parse as ul; \
+    print(ul.unquote_plus(sys.argv[1]))"'
+
+$ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
+    print (ul.quote_plus(sys.argv[1]))"'
+Example
+$ urldecode 'q+werty%3D%2F%3B'
+q werty=/;
+
+$ urlencode 'q werty=/;'
+q+werty%3D%2F%3B
+
+
+

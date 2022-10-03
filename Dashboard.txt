@@ -1,0 +1,9 @@
+Dashbaord 
+
+radio button horizontal 
+
+https://community.splunk.com/t5/Dashboards-Visualizations/Is-it-possible-to-position-radio-buttons-horizontally/td-p/23172
+
+
+event handler - match 
+https://community.splunk.com/t5/Dashboards-Visualizations/How-to-set-multiple-tokens-using-quot-condition-match-quot/td-p/339968

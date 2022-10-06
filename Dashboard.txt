@@ -7,3 +7,18 @@ https://community.splunk.com/t5/Dashboards-Visualizations/Is-it-possible-to-posi
 
 event handler - match 
 https://community.splunk.com/t5/Dashboards-Visualizations/How-to-set-multiple-tokens-using-quot-condition-match-quot/td-p/339968
+
+
+
+1)  TAKING RESULTS INTO TOKEN
+<panel>
+      <title>Maximum API calls in one hour over last 7 days</title>
+      <single>
+        <title>Max hits for api: $max_api$</title>
+        <search>
+          <query>...</query>
+          ...
+          <done>
+            <set token="max_api">$result.api$</set>
+          </done>
+        </search>

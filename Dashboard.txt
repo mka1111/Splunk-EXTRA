@@ -50,4 +50,36 @@ https://community.splunk.com/t5/Dashboards-Visualizations/How-to-set-multiple-to
          https://community.splunk.com/t5/Splunk-Search/Is-there-a-way-to-create-a-token-from-search-results-in-simple/m-p/176523
          
          ==============================================
+         
+         My example search between rows
+         
+             </panel>
+  </row>
+  
+        <search>
+          <query>index=* | stats count by process
+| rex field=process "(?&lt;this_prcess&gt;rs.*)"
+| stats count by this_prcess
+| table this_prcess</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+          <done>
+            <set token="max_api">$result.this_prcess$</set>
+          </done>
+        </search>
+<row>
+    <panel>
+      <html>
+      <style>
+        id_one .panel-body {
+        padding-bottom: 10px !important;
+        }
+      </style>
+      
+      <p>$max_api$</p>
+     </html>
+    </panel>
+  </row>
+       
+
   

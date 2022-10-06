@@ -9,8 +9,10 @@ event handler - match
 https://community.splunk.com/t5/Dashboards-Visualizations/How-to-set-multiple-tokens-using-quot-condition-match-quot/td-p/339968
 
 
-
+==============================
 1)  TAKING RESULTS INTO TOKEN
+
+==================
 <panel>
       <title>Maximum API calls in one hour over last 7 days</title>
       <single>
@@ -22,3 +24,30 @@ https://community.splunk.com/t5/Dashboards-Visualizations/How-to-set-multiple-to
             <set token="max_api">$result.api$</set>
           </done>
         </search>
+        
+        
+        FOR COMBOBOX
+         <input type="dropdown" token="last_update" searchWhenChanged="true" depends="$justHideMe$">
+    <label>last_update</label>
+    <search>
+      <query>index=my_data_updates | head 1 | convert timeformat="%H:%M:%S on %m/%d/%Y" ctime(_time) AS last_update | table last_update</query>
+    </search>
+    <fieldForLabel>last_update</fieldForLabel>
+    <fieldForValue>last_update</fieldForValue>
+    <selectFirstChoice>true</selectFirstChoice>
+  </input>
+  
+  FROM SEARCH
+  <search id="minVal">
+           <query>| makeresults | eval minute_val=`cts_sm_minute_builder`</query>
+           <earliest>$t_picker.earliest$</earliest>
+    <latest>$t_picker.latest$</latest>
+           <finalized>
+            <set token="minute_val">$result.minute_val$</set>>
+           </finalized>
+         </search>
+         
+         https://community.splunk.com/t5/Splunk-Search/Is-there-a-way-to-create-a-token-from-search-results-in-simple/m-p/176523
+         
+         ==============================================
+  

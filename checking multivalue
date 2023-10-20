@@ -1,0 +1,15 @@
+index=*  sourcetype IN ( 
+top 
+ps 
+syslog
+cr*
+) 
+
+| stats count by  sourcetype
+| eval sss = "
+top  
+ps"
+|  rex mode=sed field=sss "s/[\r\n]+/+/g"
+| makemv delim="+" sss 
+ | eval missing=if(sss=sourcetype,"ok","missing")
+| table sourcetype missing count

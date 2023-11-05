@@ -1,1 +1,16 @@
 
+
+
+
+sysctl net.ipv4.ip_forward
+
+systemctl start sc4s
+
+
+sudo service rsyslog restart
+
+
+
+echo ubuntu ubuntu | nc -w 1 192.168.48.128:514
+
+

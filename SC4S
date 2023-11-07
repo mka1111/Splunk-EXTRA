@@ -9,6 +9,10 @@ podman container start SC4S
 
 index=* sourcetype=sc4s:events "starting up"
 
+echo “Hello SC4S” > /dev/udp/192.168.48.128/514
+
+
+
 
 
 sysctl net.ipv4.ip_forward

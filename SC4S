@@ -2,6 +2,15 @@
 ubuntu user1:marcin
 
 
+
+logs SC4S
+podman container stop SC4S
+podman container start SC4S
+
+index=* sourcetype=sc4s:events "starting up"
+
+
+
 sysctl net.ipv4.ip_forward
 
 
@@ -9,7 +18,11 @@ sudo systemctl daemon-reload
 sudo systemctl restart sc4s
 systemctl start sc4s
 
+journalctl -b -u sc4s | tail -100
 
+
+
+sudo firewall-cmd --list-all
 
 
 sudo service rsyslog restart
@@ -20,4 +33,12 @@ echo ubuntu ubuntu | nc -w 1 192.168.48.128 514
 
 echo "<111>Apr 19 10:29:53 3.3.3.3 LEEF:2.0|Lancope|StealthWatch|1.0|41|^|src=192.0.2.0^dst=172.50.123.1^sev=5^cat=anomaly^srcPort=81^dstPort=21^usrName=joe.black" | nc -w 1 192.168.48.128 514
 
+
+Linux service (systemd) commands¶
+Check service status systemctl status sc4s
+Start service systemctl start service
+Stop service systemctl stop service
+Restart service systemctl restart service
+Enabling service at boot systemctl enable sc4s
+Query the system journal journalctl -b -u sc4s
 

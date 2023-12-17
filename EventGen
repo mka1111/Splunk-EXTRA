@@ -59,4 +59,93 @@ token.2.replacementType = file
 token.2.replacement = $SPLUNK_HOME/etc/apps/SA-Eventgen/samples/users
 
 
+token.1.token = @@integer
+token.1.replacementType = random
+token.1.replacement = integer[0:10]
+
+# replace @@AuditType
+token.1.token = @@AuditType
+token.1.replacementType = static
+token.1.replacement = Success
+
+## replace @@ComputerName
+token.2.token = @@ComputerName
+token.2.replacementType = random
+token.2.replacement = ipv4
+
+## replace @@User
+token.3.token = @@User
+token.3.replacementType = file
+token.3.replacement = users.list
+
+## replace @@RecordNumber
+token.4.token = @@ RecordNumber
+token.4.replacementType = random
+token.4.replacement = integer[0:99999]
+
+
+ken.1.token = (aaa2)
+token.1.replacementType = file
+token.1.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/radhosts.sample
+
+token.2.token = radiusd\[(\d+)\]
+token.2.replacementType = file
+token.2.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/radPIDs.sample
+
+token.3.token = (5559031692)@splunktel.com
+token.3.replacementType = mvfile
+token.3.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/mdn.sample:1
+
+token.4.token = (10\.94\.63\.34)
+token.4.replacementType = file
+token.4.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/internal_ips.sample
+
+token.5.token = (130\.253\.37\.97)
+token.5.replacementType = file
+token.5.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/external_ips.sample
+
+token.6.token = (10\.2\.1\.35)
+token.6.replacementType = file
+token.6.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/webhosts.sample
+
+token.7.token = (POST /playhistory/uploadhistory)
+token.7.replacementType = file
+token.7.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/uris.sample
+
+# These replacements are taken from uris.sample
+token.8.token = (\$sartId\$)
+token.8.replacementType = file
+token.8.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/searchArtists.sample
+
+token.9.token = (\$trackId\$)
+token.9.replacementType = file
+token.9.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/trackIDs.sample
+
+token.10.token = (\$artId\$)
+token.10.replacementType = file
+token.10.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/artIDs.sample
+
+token.11.token = (\$mdn\$)
+token.11.replacementType = mvfile
+token.11.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/mdn.sample:1
+# End replacements from uris.sample
+
+token.12.token = "(Mozilla/5\.0[^"]+)"
+token.12.replacementType = file
+token.12.replacement = $SPLUNK_HOME/etc/apps/oidemo/samples/useragents.sample
+
+token.13.token = \s{1}(468)\s{1}
+token.13.replacementType = random
+token.13.replacement = integer[100:1000]
+
+token.14.token = \s{1}(1488)\s{1}
+token.14.replacementType = random
+token.14.replacement = integer[200:4000]
+
+# Failures.  We want far less events per second for this, approximately 2% of total
+[sample.mobilemusicfailure.csv]
+sampletype = csv
+interval = 15
+
+
 

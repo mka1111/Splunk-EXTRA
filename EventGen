@@ -52,3 +52,11 @@ token.1.replacementType = file
 token.1.replacement = $SPLUNK_HOME/etc/apps/SA-Eventgen/samples/orderType.sample
 
 
+# arn:aws:iam::772089552793:user/npadakanti"
+
+token.2.token = user/(\S+)"
+token.2.replacementType = file
+token.2.replacement = $SPLUNK_HOME/etc/apps/SA-Eventgen/samples/users
+
+
+

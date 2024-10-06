@@ -1,0 +1,5 @@
+index=* earliest=0 cmd.exe sourcetype=wineventlog  [|inputlookup cmd.csv | fields new_process_name ]
+| lookup cmd.csv  new_process_name OUTPUT args as args
+| eval process=lower(process)
+| where like(process,"%".lower(args)."%")
+|table new_process_name  process args

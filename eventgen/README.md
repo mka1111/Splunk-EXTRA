@@ -7,6 +7,7 @@
 
 | table  host index source sourcetype _raw
 
+<img title="a ddddd" alt="Alt text" src="../images/table.png">
 
 
 ## To disable / enable source in the eventgen

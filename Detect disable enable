@@ -1,4 +1,11 @@
 
+index=_* Eventgen
+| stats count by uri_path
+| table uri_path
+
+
+
+
 
 /services/configs/conf-eventgen
 /servicesNS/-/search/data/inputs/modinput_eventgen

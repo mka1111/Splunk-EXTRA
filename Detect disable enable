@@ -1,0 +1,6 @@
+
+
+/services/configs/conf-eventgen
+/servicesNS/-/search/data/inputs/modinput_eventgen
+/servicesNS/nobody/SA-Eventgen/data/inputs/modinput_eventgen/default/disable
+/servicesNS/nobody/SA-Eventgen/data/inputs/modinput_eventgen/default/enable

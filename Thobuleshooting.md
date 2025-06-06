@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/c514c807-f429-43b3-b761-4e7c4dcdeace)
 
 ===== Restarting
 
@@ -23,4 +23,19 @@ uid=997(splunk) gid=985(splunk) groups=985(splunk),4(adm)
 
 
 
-======
+======  INDX Indexer switched off   - checking logs on UF
+
+06-06-2025 18:36:21.558 +0100 INFO  TailReader [107812 tailreader0] - Batch input finished reading file='/opt/splunkforwarder/var/spool/splunk/tracker.log'
+06-06-2025 18:36:25.618 +0100 WARN  AutoLoadBalancedConnectionStrategy [107804 TcpOutEloop] - Cooked connection to ip=192.168.1.84:9997 timed out
+06-06-2025 18:36:45.543 +0100 WARN  AutoLoadBalancedConnectionStrategy [107804 TcpOutEloop] - Cooked connection to ip=192.168.1.84:9997 timed out
+06-06-2025 18:36:51.543 +0100 INFO  TailReader [107812 tailreader0] - Batch input finished reading file='/opt/splunkforwarder/var/spool/splunk/tracker.log'
+06-06-2025 18:37:05.467 +0100 WARN  AutoLoadBalancedConnectionStrategy [107804 TcpOutEloop] - Cooked connection to ip=192.168.1.84:9997 timed out
+06-06-2025 18:37:21.475 +0100 INFO  TailReader [107812 tailreader0] - Batch input finished reading file='/opt/splunkforwarder/var/spool/splunk/tracker.log'
+06-06-2025 18:37:25.391 +0100 WARN  AutoLoadBalancedConnectionStrategy [107804 TcpOutEloop] - Cooked connection to ip=192.168.1.84:9997 timed out
+
+
+
+![image](https://github.com/user-attachments/assets/88f4b9fd-0e2b-4165-b47f-a882d1afac2c)
+
+
+

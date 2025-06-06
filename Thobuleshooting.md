@@ -1,6 +1,8 @@
 
 
 ===== Restarting
+
+
 splunk@tiger:~/var/log/splunk$ cat splunkd_stderr.log 
 2025-06-04 21:00:14.812 +0100 splunkd started (build e9664af3d956) pid=621253
 2025-06-04 21:13:55.527 +0100 Interrupt signal received sent by PID 628479, command="/opt/splunkforwarder/bin/splunk restart" (UID 997, same as my group)
@@ -15,6 +17,8 @@ splunk@tiger:~/var/log/splunk$ cat splunkd_stderr.log
 2025-06-06 18:24:48.177 +0100 splunkd started (build e9664af3d956) pid=107746
 splunk@tiger:~/var/log/splunk$ id
 uid=997(splunk) gid=985(splunk) groups=985(splunk),4(adm)
+
+
 ![image](https://github.com/user-attachments/assets/186e0049-2a55-4634-a440-616f5aca5cbf)
 
 

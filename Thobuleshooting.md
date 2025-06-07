@@ -59,6 +59,19 @@ splunk@tiger:~/var/log/splunk$ ^C
 
 
 
+======== deployment new config
+
+configuration_change.log
+
+
+{"datetime":"06-07-2025 07:55:28.674 +0100","log_level":"INFO ","component":"ConfigChange","data":{"path":"/opt/splunkforwarder/etc/apps/TEST-SSL/local/app.conf","action":"update","modtime":"Sat Jun  7 07:49:28 2025","epoch_time":"1749279328","new_checksum":"0x1061dff8c1acaa07","old_checksum":"0xb83ef9c8f2ed9fad","changes":[{"stanza":"install","properties":[{"name":"state","new_value":"","old_value":"enabled"}]}]}}
+{"datetime":"06-07-2025 07:55:28.682 +0100","log_level":"INFO ","component":"ConfigChange","data":{"path":"/opt/splunkforwarder/etc/apps/TEST-SSL/local/app.conf","action":"update","modtime":"Sat Jun  7 07:55:28 2025","epoch_time":"1749279328","new_checksum":"0xb83ef9c8f2ed9fad","old_checksum":"0x1061dff8c1acaa07","changes":[{"stanza":"install","properties":[{"name":"state","new_value":"enabled","old_value":""}]}]}}
+^C
+
+
+
+
+
 
 
 

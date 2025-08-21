@@ -178,4 +178,40 @@ It’s a **baseline document** that helps you track what exists, where it lives,
 
 Would you like me to **create a ready-to-use Splunk Inventory Plan template in Excel/CSV format** so you can just fill in your environment’s details?
 
+Splunk Core
+
+Splunk Enterprise → The main platform for collecting, indexing, searching, visualizing machine data.
+
+Splunk Cloud → Same as Enterprise, but managed in Splunk’s cloud.
+
+🔹 2. Splunk Premium Solutions (Licensed separately)
+
+These are the “big” packaged apps that deliver specialized functionality:
+
+Splunk Enterprise Security (ES)
+
+Security Information and Event Management (SIEM) solution.
+
+Provides correlation searches, risk-based alerting, dashboards, threat intel, incident review.
+
+Splunk IT Service Intelligence (ITSI)
+
+IT Operations & Observability solution.
+
+Provides glass tables, service health scores, predictive analytics for outages.
+
+Splunk User Behavior Analytics (UBA)
+
+Detects insider threats and advanced persistent threats (APTs) using ML.
+
+Splunk Mission Control
+
+Cloud-native security operations platform to centralize investigations, triage, and response.
+
+Splunk SOAR (Phantom)
+
+Security Orchestration, Automation, and Response (SOAR).
+
+Automates repetitive SOC tasks.
+
 

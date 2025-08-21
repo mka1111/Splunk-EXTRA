@@ -78,3 +78,104 @@ A Splunk Deployment Plan defines how you **ingest, index, search, secure, scale,
 
 👉 Do you want me to prepare a **visual diagram of a typical Splunk enterprise deployment plan** (with DS, CM, SHC, Indexer cluster, etc.) so you can show it in an interview?
 
+
+
+Got it 👍 — when someone asks about a **Splunk Inventory Plan**, they usually mean a structured **list (inventory)** of all the Splunk components, apps, and configurations in the environment.
+It’s a **baseline document** that helps you track what exists, where it lives, and how it’s configured.
+
+---
+
+## 🔹 Purpose of a Splunk Inventory Plan
+
+* To have a **clear record** of Splunk infrastructure.
+* To support **capacity planning** (storage, CPUs, RAM).
+* To align **compliance & security controls** (RBAC, retention).
+* To simplify **audits, troubleshooting, and upgrades**.
+
+---
+
+## 🔹 What to Include in a Splunk Inventory Plan
+
+### 1. **Infrastructure Components**
+
+| Component                  | Details to Capture                                                                                              |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Indexers**               | Hostname, IP, OS, CPUs, RAM, Disk allocation, Role (clustered or standalone), replication factor, search factor |
+| **Search Heads**           | Hostname, SHC role (captain/member), Deployer info, installed apps, resource specs                              |
+| **Cluster Master (CM)**    | Hostname, version, replication/search factors it manages                                                        |
+| **Deployment Server (DS)** | Hostname, forwarder apps it manages, clients count                                                              |
+| **Forwarders (UF/HF)**     | Hostname, role, apps deployed, data sources                                                                     |
+| **License Master**         | Hostname, license volume, warning thresholds                                                                    |
+
+---
+
+### 2. **Indexes**
+
+* Index name
+* Daily ingest (GB/day)
+* Retention policy (hot/warm/cold/frozen)
+* Data type/source (logs, metrics, security, etc.)
+
+---
+
+### 3. **Apps & Add-ons**
+
+* App name
+* Version
+* Installed on (Indexer/Search Head/Forwarder)
+* Owner/maintainer
+* Dependencies
+
+---
+
+### 4. **Users & Roles**
+
+* RBAC matrix: Role → Capabilities → Assigned users/groups.
+* Authentication integration (LDAP, SAML, etc.).
+
+---
+
+### 5. **Data Sources**
+
+* Source system (firewall, OS logs, database, SaaS, etc.).
+* Input type (syslog, API, file monitor, etc.).
+* Forwarder/collector location.
+* Volume (GB/day).
+
+---
+
+### 6. **Licensing**
+
+* Total license capacity.
+* Daily peak usage.
+* Assigned license pools.
+
+---
+
+### 7. **Versioning & Patching**
+
+* Splunk Enterprise version per node.
+* App versions.
+* Upgrade history and patch schedule.
+
+---
+
+## 🔹 Example Format (Excel/CSV or CMDB style)
+
+| Component | Hostname   | Role       | OS     | CPU/RAM | Splunk Ver | Notes   |
+| --------- | ---------- | ---------- | ------ | ------- | ---------- | ------- |
+| Indexer01 | idx01.corp | Indexer    | RHEL 8 | 16/64GB | 9.2.1      | Site A  |
+| SH01      | sh01.corp  | SHC member | RHEL 8 | 8/32GB  | 9.2.1      | Captain |
+
+---
+
+✅ **In practice:**
+
+* Many companies keep this in **Excel**, **Confluence**, or a **CMDB**.
+* It’s often paired with a **Deployment Plan** → Deployment = *how* you design/install; Inventory = *what* you already have.
+
+---
+
+Would you like me to **create a ready-to-use Splunk Inventory Plan template in Excel/CSV format** so you can just fill in your environment’s details?
+
+

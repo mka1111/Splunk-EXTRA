@@ -214,4 +214,8 @@ Security Orchestration, Automation, and Response (SOAR).
 
 Automates repetitive SOC tasks.
 
+==================
+In transforms.conf, WRITE_META = true is used with props/transforms rules (for field extraction, routing, or rewriting metadata)
+
+
 

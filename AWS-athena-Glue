@@ -1,0 +1,10 @@
+Summary Table
+Service / Component	Pricing
+Athena query scan	$5 per TB scanned (rounded up; 10 MB minimum per query)
+Athena Lambda costs (federated queries)	Charged separately under AWS Lambda pricing
+Glue ETL / Crawlers / Endpoints	$0.44 per DPU-hour, billed per second (1-min min on Glue v2.0)
+Glue Data Catalog storage	Free up to 1M objects; $1 per 100K objects/month over free tier
+Glue Data Catalog requests	Free up to 1M requests; $1 per 1M requests/month over free tier
+Glue stats/compaction tasks	$0.44 per DPU-hour (1-min minimum)
+Glue DataBrew sessions / jobs	$1.00 per 30-min interactive session; $0.48 per node-hour for jobs
+Zero-ETL functions	No extra Glue fee; pay for data ingestion (e.g. $1.50/GB) + DPU processing

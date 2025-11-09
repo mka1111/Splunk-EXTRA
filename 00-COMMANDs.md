@@ -5,6 +5,8 @@
 # Version
 
 splunk version
+curl -k -u admin:password https://localhost:8089/services/server/info
+
 # On Linux/Unix
 rpm -qa | grep splunk
 # or

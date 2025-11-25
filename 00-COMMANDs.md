@@ -213,3 +213,9 @@ sudo passwd splunk
 4. **Firewall**: Ensure necessary ports are open for Splunk communication
 
 This setup ensures Splunk runs with the principle of least privilege while having access to necessary system resources and log files.
+
+
+
+## firewall 
+ufw status
+

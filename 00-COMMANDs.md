@@ -214,6 +214,14 @@ sudo passwd splunk
 
 This setup ensures Splunk runs with the principle of least privilege while having access to necessary system resources and log files.
 
+## Create user
+
+
+<img width="517" height="77" alt="image" src="https://github.com/user-attachments/assets/ad52f259-6249-4c64-8f99-a8f37b1fb5cd" />
+
+
+
+
 
 
 ## firewall 

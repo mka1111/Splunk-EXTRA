@@ -1,5 +1,11 @@
 
 
+az account set --subscription xxxxx
+az acr login --name xxx
+
+
+
+
 
 az ad app permission list --id e042ec79-34cd-498f-9d9f-1234234
 

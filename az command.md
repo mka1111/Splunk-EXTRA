@@ -37,8 +37,30 @@ az group list --output table
 
 ```
 
+az keyvault secret list --vault-name mkamka33333
 
+# Show Password
+```
 
+─[mka@parrot]─[~/content-develop-a-python-app-to-access-key-vault-using-a-service-principal]
+└──╼ $az keyvault secret show --vault-name mkamka33333  --name olaola
+{
+"attributes": {
+"created": 1771786592,
+"enabled": true,
+"recoverableDays": 90,
+"recoveryLevel": "Recoverable+Purgeable",
+"updated": 1771786592
+},
+"contentType": null,
+"id": "https://mkamka33333.vault.azure.net/secrets/olaola/8a70159bf2994f7d990d6763ea4c9255",
+"kid": null,
+"managed": null,
+"name": "olaola",
+"tags": null,
+"value": "spain"
+}
+```
 
 
 

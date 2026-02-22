@@ -3,6 +3,44 @@
 az account set --subscription xxxxx
 az acr login --name xxx
 
+az config get
+# Get location of workgroup
+```
+az group show --name 507-15223ebc-develop-a-python-app-to-access-key-va  --query "location" --output tsv
+```
+
+# Get name of workgroup
+
+```
+az group list --output table
+```
+# To see substription  -> name: "xxxx"
+```
+└──╼ $az account list
+[
+{
+"cloudName": "AzureCloud",
+"homeTenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118",
+"id": "0cfe2870-d256-4119-b0a3-16293ac11bdc",
+"isDefault": false,
+"managedByTenants": [],
+"name": "P4-Real Hands-On Labs",
+"state": "Enabled",
+"tenantDefaultDomain": "realhandsonlabs.com",
+"tenantDisplayName": "Pluralsight Cloud",
+"tenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118",
+"user": {
+"name": "cloud_user_p_906d0d3f@realhandsonlabs.com",
+"type": "user"
+
+
+
+```
+
+
+
+
+
 
 
 

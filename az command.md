@@ -22,7 +22,14 @@ uplod file
 az storage blob upload     --account-name "acgstorage2"     --container-name "images"     --file /tmp/aaa.txt   --name test-mka.txt
 
 
+az storage blob download \
+    --account-name <YourStorageAccountName> \
+    --container-name <YourContainerName> \
+    --name <BlobNameInStorage> \
+    --file <PathToLocalDestination>
 
+
+    
 
 
 az account set --subscription xxxxx

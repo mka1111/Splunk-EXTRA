@@ -1,5 +1,30 @@
 
 
+az account show
+
+az group list --output table
+
+az storage account list --output table
+
+
+
+
+az storage container list     --account-name "acgstorage2"   --output table
+
+
+list of files in container
+
+az storage blob list     --account-name acgstorage2     --container-name images     --output table
+
+
+
+uplod file
+az storage blob upload     --account-name "acgstorage2"     --container-name "images"     --file /tmp/aaa.txt   --name test-mka.txt
+
+
+
+
+
 az account set --subscription xxxxx
 az acr login --name xxx
 

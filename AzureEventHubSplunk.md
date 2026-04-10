@@ -52,6 +52,7 @@ Retention znaczy ze jak nie ma polaczenia to w tym czasie dane bede trzymane w e
 
 
 
+<img width="1417" height="566" alt="image" src="https://github.com/user-attachments/assets/d387eb10-5b4e-400f-9d6f-d3777d00d308" />
 
 
 

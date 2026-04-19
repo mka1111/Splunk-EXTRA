@@ -124,3 +124,33 @@ $SPLUNK_HOME/bin/splunk set log-level deployment -level INFO
    - Review deployment server load
 
 Would you like me to elaborate on any specific log pattern or error message you're encountering?
+
+
+```
+index=_*  192.168.1.132 component=DSphonehome
+| timechart count by host
+
+
+```
+
+## deploymentclient.con
+
+<img width="962" height="272" alt="image" src="https://github.com/user-attachments/assets/25838cc3-fbc1-4a4d-96f6-13ecd49b49b6" />
+
+
+Download app
+
+
+```
+
+index=_internal sourcetype=splunkd    192.168.1.132 component=PackageDownloadRestHandler  NOT action=search
+| table  _time peer app serverclass
+
+```
+
+To force update
+
+```
+splunk reload deploy-server
+```
+

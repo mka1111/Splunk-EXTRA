@@ -23,5 +23,17 @@ XDR unifies all these Defender Products.
     - and response acros / endpoints, identity app emails colaberate applications
    
       ??? co to jest Defender Suit
+      ??? exchange online protection - can detect phising email uses flow rules/ transport rules
+      ??? Safe attachment part MDO
+      ??? Self-healing
+      ???? Defender for Identity vs Defender for Endpoint
+      
+
+      <img width="1228" height="815" alt="image" src="https://github.com/user-attachments/assets/a77e1704-94f5-470e-8c63-8712f6743ec8" />
+
+
+      
+
+      
 
       

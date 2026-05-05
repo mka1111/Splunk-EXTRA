@@ -279,3 +279,13 @@ tail -f /opt/splunkforwarder/var/log/splunk/splunkd.log | grep -i "crc\|rotate"
 | Testuj konfigurację przed wdrożeniem | Nie mieszaj różnych metod rotacji dla tych samych plików |
 
 Dzięki tej konfiguracji Splunk nie będzie ponownie indeksował danych po rotacji, a logi będą bezpiecznie rotowane bez utraty miejsca na dysku.
+
+
+
+
+
+<img width="742" height="314" alt="image" src="https://github.com/user-attachments/assets/badad746-7ac8-4f9d-a284-00d960aae1c0" />
+
+
+
+

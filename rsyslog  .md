@@ -6,6 +6,10 @@ https://rogierdijkman.medium.com/log-rotation-for-syslog-cef-collector-servers-5
 
 
 
+<img width="1141" height="558" alt="image" src="https://github.com/user-attachments/assets/646c6b2a-9372-4f4b-9758-7e432526b99b" />
+
+
+
 ***  Rotation of the logs is controlled by configuration files that reside in the /etc/logrotate.d  ***
 
 example

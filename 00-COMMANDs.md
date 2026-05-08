@@ -243,3 +243,7 @@ ufw status
 
 <img width="1703" height="221" alt="image" src="https://github.com/user-attachments/assets/bbf2c2f4-6ad8-4041-9465-de3bf26399b3" />
 
+this login subsription only for vault
+<img width="885" height="72" alt="image" src="https://github.com/user-attachments/assets/57c36676-8c32-4208-bd3d-4177eb8b38b4" />
+
+

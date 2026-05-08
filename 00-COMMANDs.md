@@ -232,6 +232,10 @@ This setup ensures Splunk runs with the principle of least privilege while havin
 
 
 ## firewall 
+
+
+<img width="1691" height="116" alt="image" src="https://github.com/user-attachments/assets/baf63110-3ac3-4cb7-b9fa-a94dd81e420b" />
+
 ufw status
 
 ## tcpdump

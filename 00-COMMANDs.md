@@ -241,4 +241,5 @@ ufw status
 ## tcpdump
 <img width="582" height="90" alt="image" src="https://github.com/user-attachments/assets/84383f1f-e7bc-46a9-9b33-5d96216ce6d6" />
 
+<img width="1703" height="221" alt="image" src="https://github.com/user-attachments/assets/bbf2c2f4-6ad8-4041-9465-de3bf26399b3" />
 

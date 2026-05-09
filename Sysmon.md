@@ -14,3 +14,20 @@ https://github.com/olafhartong/TA-Sysmon-deploy/blob/master/bin/update.bat
 
 
 
+
+
+
+xml file
+https://github.com/swiftonsecurity/sysmon-config
+
+https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml
+
+
+<img width="897" height="99" alt="image" src="https://github.com/user-attachments/assets/dad6791e-7fff-4122-ba68-0136a7723b3d" />
+
+<img width="1185" height="547" alt="image" src="https://github.com/user-attachments/assets/3520db56-43a4-495b-b02b-418c2c5d788e" />
+
+<img width="1035" height="466" alt="image" src="https://github.com/user-attachments/assets/affa7488-f83f-437c-abc1-9bd2ff474efa" />
+
+
+<img width="921" height="338" alt="image" src="https://github.com/user-attachments/assets/207b84d2-c4ea-4430-8408-7da9f2333047" />

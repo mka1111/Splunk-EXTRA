@@ -112,3 +112,22 @@ Check if: "Log on as: Local System Account" If not, select it and save it.
 Restart Splunk Forwarder service and verify Sysmon log ingestion
 
 That's a permission issue commonly encountered on Sysmon log ingestion.
+
+
+```
+
+sc config "YourServiceName" obj= "LocalSystem"
+
+# Change service to run as LocalSystem
+sc.exe config "YourServiceName" obj="LocalSystem"
+
+# After changing, restart the service
+Restart-Service -Name "YourServiceName"
+
+
+```
+
+
+
+
+

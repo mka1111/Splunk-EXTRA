@@ -2,6 +2,11 @@
 
 
 
+echo “Hello SC4S” > /dev/udp/<SC4S_ip>/514
+
+
+
+
 # Version
 
 splunk version

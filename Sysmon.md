@@ -29,8 +29,61 @@ https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml
 <img width="469" height="101" alt="image" src="https://github.com/user-attachments/assets/c469cdcb-e4bf-4d4e-9871-16a670c09202" />
 
 
+```
+.\Sysmon64.exe -accepteula -i sysmonconfig.xml
 
 
+
+# Stop the Sysmon driver
+Stop-Service -Name Sysmon
+
+# Start the Sysmon driver
+Start-Service -Name Sysmon
+
+# Verify status
+Get-Service -Name Sysmon
+
+# Alternative using sc.exe
+sc.exe stop Sysmon
+sc.exe start Sysmon
+
+:: Stop and start Splunk Forwarder service
+net stop SplunkForwarder
+net start SplunkForwarder
+
+:: Or restart with a single command (not available in CMD)
+:: Alternative - restart through SC
+sc stop SplunkForwarder
+sc start SplunkForwarder
+
+:: Check service status
+sc query SplunkForwarder
+
+
+# Simple restart command
+Restart-Service -Name SplunkForwarder
+
+# Alternative with detailed output
+Stop-Service -Name SplunkForwarder -Force
+Start-Service -Name SplunkForwarder
+
+# Check status
+Get-Service -Name SplunkForwarder
+
+# Restart and wait for completion
+Restart-Service -Name SplunkForwarder -PassThru | Wait-ForStatus -Timeout 60
+
+
+```
+
+
+```
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+disabled = 0
+index = main
+renderXml = true
+sourcetype = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+```
 
 
 

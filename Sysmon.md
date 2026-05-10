@@ -95,3 +95,20 @@ sourcetype = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
 
 
 <img width="921" height="338" alt="image" src="https://github.com/user-attachments/assets/207b84d2-c4ea-4430-8408-7da9f2333047" />
+
+
+
+
+Steps to fix:
+
+Go to Windows Services and locate Splunk Forwarder one.
+
+Right click - Properties
+
+Select tab "Log On"
+
+Check if: "Log on as: Local System Account" If not, select it and save it.
+
+Restart Splunk Forwarder service and verify Sysmon log ingestion
+
+That's a permission issue commonly encountered on Sysmon log ingestion.

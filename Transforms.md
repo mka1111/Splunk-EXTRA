@@ -89,3 +89,8 @@ WRITE_META = true
 [firewall_logs]
 INGEST_EVAL = sourcetype=if(match(_raw,"DROPPED"),"firewall_deny","firewall_allow")
 
+# Replacing part of raw data
+
+
+<img width="716" height="151" alt="image" src="https://github.com/user-attachments/assets/643ea0f9-044f-48db-8cb7-d52e1349f581" />
+

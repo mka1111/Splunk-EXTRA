@@ -1,0 +1,36 @@
+─╼ #cat props.conf
+[marcin_cisco_syslog]
+DATETIME_CONFIG =
+LINE_BREAKER = ([\r\n]+)
+MAX_TIMESTAMP_LOOKAHEAD = 32
+SHOULD_LINEMERGE = false
+TIME_FORMAT = %b %d %H:%M:%S
+TRANSFORMS = syslog-host
+TRANSFORMS-redact = redact_ip
+pulldown_type = true
+TRANSFORMS-route_jrivera = route_jrivera
+┌─[root@parrot]─[/opt/splunk/etc/apps/search/local]
+└──╼ #cat transforms.conf
+REGEX = jrivera
+DEST_KEY = _TCP_ROUTING
+FORMAT = send_to_jrivera_listener
+┌─[root@parrot]─[/opt/splunk/etc/apps/search/local]
+└──╼ #cat outputs.conf
+[tcpout]
+defaultGroup = default-autolb-group
+
+[tcpout:send_to_jrivera_listener]
+server = 192.168.1.107:4444
+┌─[root@parrot]─[/opt/splunk/etc/apps/search/local]
+└──╼ #
+
+
+
+
+
+
+
+
+
+
+

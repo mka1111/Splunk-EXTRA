@@ -70,5 +70,7 @@ nost likly rsyslog will be broken after script
 <img width="872" height="330" alt="image" src="https://github.com/user-attachments/assets/d3a97268-23db-4f7b-ae3d-2d7fef06e8e5" />
 
 
+## To test
+<img width="1450" height="146" alt="image" src="https://github.com/user-attachments/assets/381406ee-4b39-405a-aafb-e83ce2bf6fe0" />
 
 

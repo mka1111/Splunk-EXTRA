@@ -360,6 +360,27 @@ action(type="omfile" file="/var/log/xxx.log")
 
 
 
+
+
+
+
+ruleset(name="security_ruleset"){
+action(type="omfwd"
+               target="192.168.1.19"
+               port="9999"
+               protocol="tcp" )
+
+
+
+ 
+
+   }
+
+ruleset(name="security_ruleset"){
+action(type="omfile" file="/var/log/aaa.log")
+
+}
+
 ```
 
 

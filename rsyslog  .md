@@ -334,5 +334,38 @@ Dzięki tej konfiguracji Splunk nie będzie ponownie indeksował danych po rotac
 <img width="742" height="314" alt="image" src="https://github.com/user-attachments/assets/badad746-7ac8-4f9d-a284-00d960aae1c0" />
 
 
+# Save everything from port into file 
 
+```
+
+
+module(load="imtcp")         # TCP receiver
+module(load="imudp")         # UDP receiver
+input(type="imtcp" port="2514" ruleset="security_ruleset")
+input(type="imudp" port="2514" ruleset="security_ruleset")
+
+$FileOwner root
+$FileGroup root
+$FileCreateMode 0640
+$DirCreateMode 0755
+$Umask 0022
+$WorkDirectory /var/spool/rsyslog
+$IncludeConfig /etc/rsyslog.d/*.conf
+
+
+ruleset(name="security_ruleset"){
+action(type="omfile" file="/var/log/xxx.log")
+
+}
+
+
+
+```
+
+
+# easy Command
+
+```
+echo "Test message on port UDP 2514" | nc  -u 127.0.0.1  2514 -w0
+```
 

@@ -46,3 +46,13 @@ Find how to do it
 
 <img width="1818" height="1001" alt="image" src="https://github.com/user-attachments/assets/c62733d1-b271-47ce-ab28-d7b7cbdbcd52" />
 
+
+
+
+# AWS / GCP
+
+
+<img width="1887" height="1040" alt="image" src="https://github.com/user-attachments/assets/1ed73bf8-5fe1-4e88-8105-935c5d772a14" />
+
+
+

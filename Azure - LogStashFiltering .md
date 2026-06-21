@@ -56,4 +56,8 @@ Find how to do it
 
 <img width="1854" height="1025" alt="image" src="https://github.com/user-attachments/assets/5f7d44d4-9171-4d29-b206-2e213b2b1c66" />
 
+Nicholas DiCola - https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/S3-Lambda
 
+Sreedhar Ande - https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/AWS-CloudTrail-Ingestion-Lambda
+
+Chris Abberley - cabberley/Azure-Sentinel-Log-Ingestion-Engine (Note: this appears as a partial GitHub path; the full URL is likely https://github.com/cabberley/Azure-Sentinel-Log-Ingestion-Engine)

@@ -388,6 +388,16 @@ action(type="omfile" file="/var/log/aaa.log")
 
 ```
 echo "Test message on port UDP 2514" | nc  -u 127.0.0.1  2514 -w0
+
+
+
+logger -p mail.info "Test message from $(hostname) at $(date)"
+
+
+
+sudo tcpdump -i any port 514 -n -v
+
+
 ```
 
 

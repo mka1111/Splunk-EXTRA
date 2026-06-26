@@ -390,3 +390,29 @@ action(type="omfile" file="/var/log/aaa.log")
 echo "Test message on port UDP 2514" | nc  -u 127.0.0.1  2514 -w0
 ```
 
+
+# Read file and send to specific ip and port
+
+
+```
+module(load="imfile")  # Load the module to read text files
+
+# Define the input for reading /var/log/mail
+input(type="imfile"
+      File="/var/log/mail"            # Path to the file to monitor
+      Tag="mail-log:"                 # Tag added to messages from this file
+      StateFile="state-mail-log"      # File to track the read position
+      Facility="mail"                 # Assign the 'mail' facility
+      Severity="info")                # Assign severity level
+
+# Define the forwarding action to send logs to the remote server
+# This rule will apply to all messages processed by rsyslog.
+action(type="omfwd"
+       protocol="udp"                 # Use UDP for non-blocking, lower overhead
+       target="192.168.131.135"       # Remote server's IP address
+       port="514"                     # Destination port
+       queue.type="linkedList"        # Recommended for network forwarding, prevents blocking[citation:5][citation:6]
+       queue.size="10000")            # Max number of messages to queue
+
+```
+

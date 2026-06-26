@@ -1,0 +1,87 @@
+NETFLOW src=192.168.1.10 dst=8.8.8.8 sport=51001 dport=53 proto=UDP packets=2 bytes=180 duration=1
+NETFLOW src=192.168.1.11 dst=1.1.1.1 sport=51002 dport=53 proto=UDP packets=3 bytes=220 duration=1
+NETFLOW src=192.168.1.12 dst=142.250.190.14 sport=51003 dport=443 proto=TCP packets=18 bytes=15432 duration=12
+NETFLOW src=192.168.1.13 dst=151.101.1.69 sport=51004 dport=443 proto=TCP packets=25 bytes=22010 duration=18
+NETFLOW src=192.168.1.14 dst=104.26.10.1 sport=51005 dport=80 proto=TCP packets=10 bytes=5300 duration=5
+NETFLOW src=192.168.1.15 dst=198.51.100.10 sport=51006 dport=22 proto=TCP packets=8 bytes=980 duration=20
+NETFLOW src=192.168.1.16 dst=203.0.113.20 sport=51007 dport=3389 proto=TCP packets=120 bytes=99000 duration=600
+NETFLOW src=192.168.1.17 dst=52.96.10.10 sport=51008 dport=443 proto=TCP packets=55 bytes=68000 duration=45
+NETFLOW src=192.168.1.18 dst=13.107.42.16 sport=51009 dport=443 proto=TCP packets=72 bytes=92000 duration=65
+NETFLOW src=192.168.1.19 dst=172.217.20.14 sport=51010 dport=443 proto=TCP packets=88 bytes=110000 duration=71
+
+NETFLOW src=10.0.0.1 dst=10.0.0.254 sport=40001 dport=161 proto=UDP packets=4 bytes=450 duration=2
+NETFLOW src=10.0.0.2 dst=10.0.0.254 sport=40002 dport=162 proto=UDP packets=3 bytes=390 duration=1
+NETFLOW src=10.0.0.3 dst=192.168.100.100 sport=40003 dport=445 proto=TCP packets=15 bytes=7200 duration=9
+NETFLOW src=10.0.0.4 dst=192.168.100.101 sport=40004 dport=139 proto=TCP packets=11 bytes=5800 duration=8
+NETFLOW src=10.0.0.5 dst=8.8.4.4 sport=40005 dport=53 proto=UDP packets=2 bytes=170 duration=1
+NETFLOW src=10.0.0.6 dst=1.0.0.1 sport=40006 dport=53 proto=UDP packets=2 bytes=180 duration=1
+NETFLOW src=10.0.0.7 dst=54.239.28.85 sport=40007 dport=443 proto=TCP packets=44 bytes=42000 duration=30
+NETFLOW src=10.0.0.8 dst=35.190.80.1 sport=40008 dport=443 proto=TCP packets=38 bytes=38000 duration=28
+NETFLOW src=10.0.0.9 dst=20.190.128.1 sport=40009 dport=443 proto=TCP packets=62 bytes=70000 duration=50
+NETFLOW src=10.0.0.10 dst=140.82.121.4 sport=40010 dport=443 proto=TCP packets=31 bytes=25000 duration=20
+
+NETFLOW src=172.16.1.1 dst=192.168.10.1 sport=60001 dport=80 proto=TCP packets=9 bytes=4500 duration=3
+NETFLOW src=172.16.1.2 dst=192.168.10.2 sport=60002 dport=443 proto=TCP packets=19 bytes=16000 duration=10
+NETFLOW src=172.16.1.3 dst=192.168.10.3 sport=60003 dport=22 proto=TCP packets=30 bytes=4200 duration=55
+NETFLOW src=172.16.1.4 dst=192.168.10.4 sport=60004 dport=25 proto=TCP packets=12 bytes=1800 duration=15
+NETFLOW src=172.16.1.5 dst=192.168.10.5 sport=60005 dport=110 proto=TCP packets=15 bytes=3100 duration=18
+NETFLOW src=172.16.1.6 dst=192.168.10.6 sport=60006 dport=143 proto=TCP packets=21 bytes=5200 duration=24
+NETFLOW src=172.16.1.7 dst=192.168.10.7 sport=60007 dport=993 proto=TCP packets=42 bytes=35000 duration=40
+NETFLOW src=172.16.1.8 dst=192.168.10.8 sport=60008 dport=995 proto=TCP packets=39 bytes=28000 duration=36
+NETFLOW src=172.16.1.9 dst=192.168.10.9 sport=60009 dport=21 proto=TCP packets=28 bytes=8300 duration=33
+NETFLOW src=172.16.1.10 dst=192.168.10.10 sport=60010 dport=20 proto=TCP packets=18 bytes=6200 duration=20
+
+NETFLOW src=192.168.50.1 dst=224.0.0.251 sport=5353 dport=5353 proto=UDP packets=5 bytes=980 duration=2
+NETFLOW src=192.168.50.2 dst=239.255.255.250 sport=1900 dport=1900 proto=UDP packets=8 bytes=1500 duration=3
+NETFLOW src=192.168.50.3 dst=255.255.255.255 sport=68 dport=67 proto=UDP packets=4 bytes=1200 duration=1
+NETFLOW src=192.168.50.4 dst=129.6.15.28 sport=51011 dport=123 proto=UDP packets=2 bytes=180 duration=1
+NETFLOW src=192.168.50.5 dst=162.159.200.1 sport=51012 dport=443 proto=TCP packets=55 bytes=52000 duration=41
+NETFLOW src=192.168.50.6 dst=104.18.1.1 sport=51013 dport=443 proto=TCP packets=60 bytes=61000 duration=46
+NETFLOW src=192.168.50.7 dst=34.117.59.81 sport=51014 dport=443 proto=TCP packets=27 bytes=22000 duration=19
+NETFLOW src=192.168.50.8 dst=151.101.65.69 sport=51015 dport=443 proto=TCP packets=32 bytes=28000 duration=22
+NETFLOW src=192.168.50.9 dst=185.199.108.153 sport=51016 dport=443 proto=TCP packets=40 bytes=39000 duration=29
+NETFLOW src=192.168.50.10 dst=52.85.132.10 sport=51017 dport=443 proto=TCP packets=51 bytes=47000 duration=37
+
+NETFLOW src=10.10.10.1 dst=172.31.0.1 sport=52001 dport=8080 proto=TCP packets=14 bytes=8400 duration=12
+NETFLOW src=10.10.10.2 dst=172.31.0.2 sport=52002 dport=8443 proto=TCP packets=17 bytes=9200 duration=14
+NETFLOW src=10.10.10.3 dst=172.31.0.3 sport=52003 dport=3306 proto=TCP packets=45 bytes=18000 duration=32
+NETFLOW src=10.10.10.4 dst=172.31.0.4 sport=52004 dport=5432 proto=TCP packets=48 bytes=21000 duration=35
+NETFLOW src=10.10.10.5 dst=172.31.0.5 sport=52005 dport=1521 proto=TCP packets=52 bytes=26000 duration=39
+NETFLOW src=10.10.10.6 dst=172.31.0.6 sport=52006 dport=6379 proto=TCP packets=20 bytes=4300 duration=11
+NETFLOW src=10.10.10.7 dst=172.31.0.7 sport=52007 dport=27017 proto=TCP packets=34 bytes=11000 duration=16
+NETFLOW src=10.10.10.8 dst=172.31.0.8 sport=52008 dport=9200 proto=TCP packets=25 bytes=9400 duration=15
+NETFLOW src=10.10.10.9 dst=172.31.0.9 sport=52009 dport=5601 proto=TCP packets=18 bytes=6300 duration=9
+NETFLOW src=10.10.10.10 dst=172.31.0.10 sport=52010 dport=9092 proto=TCP packets=29 bytes=14000 duration=18
+
+NETFLOW src=192.168.100.1 dst=203.0.113.1 sport=53001 dport=80 proto=TCP packets=8 bytes=3200 duration=4
+NETFLOW src=192.168.100.2 dst=203.0.113.2 sport=53002 dport=443 proto=TCP packets=37 bytes=33000 duration=27
+NETFLOW src=192.168.100.3 dst=203.0.113.3 sport=53003 dport=22 proto=TCP packets=16 bytes=1700 duration=22
+NETFLOW src=192.168.100.4 dst=203.0.113.4 sport=53004 dport=25 proto=TCP packets=14 bytes=2200 duration=18
+NETFLOW src=192.168.100.5 dst=203.0.113.5 sport=53005 dport=53 proto=UDP packets=2 bytes=180 duration=1
+NETFLOW src=192.168.100.6 dst=203.0.113.6 sport=53006 dport=443 proto=TCP packets=49 bytes=44000 duration=34
+NETFLOW src=192.168.100.7 dst=203.0.113.7 sport=53007 dport=993 proto=TCP packets=23 bytes=9500 duration=17
+NETFLOW src=192.168.100.8 dst=203.0.113.8 sport=53008 dport=995 proto=TCP packets=19 bytes=7600 duration=16
+NETFLOW src=192.168.100.9 dst=203.0.113.9 sport=53009 dport=143 proto=TCP packets=11 bytes=3400 duration=8
+NETFLOW src=192.168.100.10 dst=203.0.113.10 sport=53010 dport=110 proto=TCP packets=13 bytes=3600 duration=10
+
+NETFLOW src=172.20.0.1 dst=8.8.8.8 sport=54001 dport=53 proto=UDP packets=2 bytes=160 duration=1
+NETFLOW src=172.20.0.2 dst=1.1.1.1 sport=54002 dport=53 proto=UDP packets=2 bytes=170 duration=1
+NETFLOW src=172.20.0.3 dst=9.9.9.9 sport=54003 dport=53 proto=UDP packets=3 bytes=210 duration=1
+NETFLOW src=172.20.0.4 dst=208.67.222.222 sport=54004 dport=53 proto=UDP packets=2 bytes=180 duration=1
+NETFLOW src=172.20.0.5 dst=52.97.132.1 sport=54005 dport=443 proto=TCP packets=56 bytes=63000 duration=42
+NETFLOW src=172.20.0.6 dst=13.107.6.152 sport=54006 dport=443 proto=TCP packets=47 bytes=51000 duration=35
+NETFLOW src=172.20.0.7 dst=20.42.65.1 sport=54007 dport=443 proto=TCP packets=42 bytes=47000 duration=31
+NETFLOW src=172.20.0.8 dst=40.90.189.1 sport=54008 dport=443 proto=TCP packets=53 bytes=59000 duration=39
+NETFLOW src=172.20.0.9 dst=104.244.42.1 sport=54009 dport=443 proto=TCP packets=35 bytes=29000 duration=24
+NETFLOW src=172.20.0.10 dst=151.101.129.140 sport=54010 dport=443 proto=TCP packets=33 bytes=27000 duration=21
+
+NETFLOW src=192.168.200.1 dst=10.1.1.1 sport=55001 dport=5060 proto=UDP packets=14 bytes=5200 duration=13
+NETFLOW src=192.168.200.2 dst=10.1.1.2 sport=55002 dport=5061 proto=TCP packets=16 bytes=6100 duration=14
+NETFLOW src=192.168.200.3 dst=10.1.1.3 sport=55003 dport=69 proto=UDP packets=9 bytes=3100 duration=6
+NETFLOW src=192.168.200.4 dst=10.1.1.4 sport=55004 dport=514 proto=UDP packets=20 bytes=4300 duration=15
+NETFLOW src=192.168.200.5 dst=10.1.1.5 sport=55005 dport=1812 proto=UDP packets=7 bytes=1500 duration=5
+NETFLOW src=192.168.200.6 dst=10.1.1.6 sport=55006 dport=1813 proto=UDP packets=6 bytes=1400 duration=5
+NETFLOW src=192.168.200.7 dst=10.1.1.7 sport=55007 dport=389 proto=TCP packets=18 bytes=5400 duration=12
+NETFLOW src=192.168.200.8 dst=10.1.1.8 sport=55008 dport=636 proto=TCP packets=15 bytes=4900 duration=11
+NETFLOW src=192.168.200.9 dst=10.1.1.9 sport=55009 dport=88 proto=TCP packets=11 bytes=3300 duration=8
+NETFLOW src=192.168.200.10 dst=10.1.1.10 sport=55010 dport=464 proto=TCP packets=10 bytes=2900 duration=7

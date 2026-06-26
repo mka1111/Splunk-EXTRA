@@ -1,0 +1,109 @@
+Jul 19 12:00:01 web01 sshd[1001]: Accepted password for admin from 192.168.1.10 port 52201 ssh2
+Jul 19 12:00:02 web01 sshd[1002]: Failed password for root from 192.168.1.20 port 52202 ssh2
+Jul 19 12:00:03 web01 sshd[1003]: Invalid user test from 203.0.113.10 port 52203
+Jul 19 12:00:04 web01 sudo[1004]: john : TTY=pts/0 ; PWD=/home/john ; COMMAND=/usr/bin/systemctl restart nginx
+Jul 19 12:00:05 web01 sudo[1005]: alice : TTY=pts/1 ; PWD=/home/alice ; COMMAND=/usr/bin/apt update
+Jul 19 12:00:06 web01 CRON[1006]: (root) CMD (/usr/local/bin/backup.sh)
+Jul 19 12:00:07 web01 CRON[1007]: (www-data) CMD (/usr/bin/php /var/www/html/artisan schedule:run)
+Jul 19 12:00:08 web01 systemd[1]: Started Docker Application Container Engine.
+Jul 19 12:00:09 web01 systemd[1]: Stopped Apache Web Server.
+Jul 19 12:00:10 web01 kernel: CPU temperature above threshold
+
+Jul 19 12:00:11 web01 kernel: IN=eth0 OUT= MAC= SRC=192.168.1.30 DST=8.8.8.8 LEN=60 PROTO=TCP SPT=50100 DPT=443
+Jul 19 12:00:12 web01 kernel: IN=eth0 OUT= MAC= SRC=192.168.1.31 DST=1.1.1.1 LEN=52 PROTO=UDP SPT=50101 DPT=53
+Jul 19 12:00:13 firewall01 kernel: Dropped packet SRC=10.0.0.10 DST=203.0.113.5 PROTO=TCP DPT=23
+Jul 19 12:00:14 firewall01 kernel: Accepted packet SRC=10.0.0.11 DST=8.8.4.4 PROTO=UDP DPT=53
+Jul 19 12:00:15 firewall01 iptables: Denied TCP connection from 198.51.100.10 to 10.0.0.5:22
+Jul 19 12:00:16 firewall01 iptables: Allowed TCP connection from 10.0.0.12 to 172.217.20.14:443
+Jul 19 12:00:17 dns01 named[1017]: client 192.168.1.40#55321: query: openai.com IN A +
+Jul 19 12:00:18 dns01 named[1018]: client 192.168.1.41#55322: query: github.com IN AAAA +
+Jul 19 12:00:19 dns01 named[1019]: zone example.com loaded serial 2026071901
+Jul 19 12:00:20 dns01 named[1020]: network unreachable resolving './DNSKEY/IN'
+
+Jul 19 12:00:21 mail01 postfix/smtpd[1021]: connect from mail.example.com[203.0.113.25]
+Jul 19 12:00:22 mail01 postfix/smtpd[1022]: disconnect from mail.example.com[203.0.113.25]
+Jul 19 12:00:23 mail01 postfix/qmgr[1023]: 123ABCD: from=<alice@example.com>, size=12345
+Jul 19 12:00:24 mail01 postfix/local[1024]: delivered to mailbox
+Jul 19 12:00:25 mail01 dovecot: imap-login: Login: user=<bob>, rip=192.168.1.50
+Jul 19 12:00:26 mail01 dovecot: imap-login: Aborted login
+Jul 19 12:00:27 proxy01 nginx[1027]: 192.168.1.60 "GET / HTTP/1.1" 200
+Jul 19 12:00:28 proxy01 nginx[1028]: 192.168.1.61 "POST /login HTTP/1.1" 302
+Jul 19 12:00:29 proxy01 nginx[1029]: 192.168.1.62 "GET /admin HTTP/1.1" 403
+Jul 19 12:00:30 proxy01 nginx[1030]: 192.168.1.63 "GET /favicon.ico HTTP/1.1" 404
+
+Jul 19 12:00:31 web02 apache2[1031]: GET /index.html 200
+Jul 19 12:00:32 web02 apache2[1032]: POST /login 401
+Jul 19 12:00:33 web02 apache2[1033]: GET /dashboard 200
+Jul 19 12:00:34 web02 apache2[1034]: GET /robots.txt 404
+Jul 19 12:00:35 web02 mod_security[1035]: SQL Injection attempt blocked
+Jul 19 12:00:36 web02 mod_security[1036]: Cross Site Scripting attempt blocked
+Jul 19 12:00:37 vpn01 openvpn[1037]: Peer Connection Initiated
+Jul 19 12:00:38 vpn01 openvpn[1038]: TLS Error: TLS handshake failed
+Jul 19 12:00:39 vpn01 openvpn[1039]: Authenticate/Decrypt packet error
+Jul 19 12:00:40 vpn01 openvpn[1040]: Initialization Sequence Completed
+
+Jul 19 12:00:41 db01 mysql[1041]: Access denied for user 'root'
+Jul 19 12:00:42 db01 mysql[1042]: Connection established
+Jul 19 12:00:43 db01 mysql[1043]: Query executed in 12 ms
+Jul 19 12:00:44 db01 postgres[1044]: authentication failed for user postgres
+Jul 19 12:00:45 db01 postgres[1045]: checkpoint complete
+Jul 19 12:00:46 db01 oracle[1046]: ORA-01017 invalid username/password
+Jul 19 12:00:47 db01 oracle[1047]: Database opened
+Jul 19 12:00:48 storage01 nfsd[1048]: client connected
+Jul 19 12:00:49 storage01 nfsd[1049]: export mounted
+Jul 19 12:00:50 storage01 nfsd[1050]: client disconnected
+
+Jul 19 12:00:51 docker01 dockerd[1051]: Container nginx started
+Jul 19 12:00:52 docker01 dockerd[1052]: Container redis stopped
+Jul 19 12:00:53 docker01 dockerd[1053]: Image pulled successfully
+Jul 19 12:00:54 docker01 dockerd[1054]: Container removed
+Jul 19 12:00:55 kube01 kubelet[1055]: Pod frontend created
+Jul 19 12:00:56 kube01 kubelet[1056]: Pod backend terminated
+Jul 19 12:00:57 kube01 kube-apiserver[1057]: User admin authenticated
+Jul 19 12:00:58 kube01 kube-apiserver[1058]: RBAC access denied
+Jul 19 12:00:59 kube01 kube-scheduler[1059]: Successfully assigned pod
+Jul 19 12:01:00 kube01 etcd[1060]: Snapshot saved
+
+Jul 19 12:01:01 ids01 snort[1061]: ET SCAN Nmap Scan Detected
+Jul 19 12:01:02 ids01 snort[1062]: ET TROJAN Possible C2 Traffic
+Jul 19 12:01:03 ids01 suricata[1063]: Emerging Threat Malware Activity
+Jul 19 12:01:04 ids01 suricata[1064]: DNS Tunneling Detected
+Jul 19 12:01:05 ids01 suricata[1065]: SSH Brute Force Attempt
+Jul 19 12:01:06 edr01 defender[1066]: Malware detected and quarantined
+Jul 19 12:01:07 edr01 defender[1067]: Full scan completed
+Jul 19 12:01:08 edr01 falcon[1068]: Process injection prevented
+Jul 19 12:01:09 edr01 falcon[1069]: Credential dumping blocked
+Jul 19 12:01:10 edr01 sentinelone[1070]: Ransomware activity prevented
+
+Jul 19 12:01:11 auth01 sssd[1071]: User authentication succeeded
+Jul 19 12:01:12 auth01 sssd[1072]: User authentication failed
+Jul 19 12:01:13 auth01 winbind[1073]: Domain controller reachable
+Jul 19 12:01:14 auth01 winbind[1074]: NTLM authentication failed
+Jul 19 12:01:15 auth01 login[1075]: ROOT LOGIN on tty1
+Jul 19 12:01:16 auth01 login[1076]: LOGIN FAILED
+Jul 19 12:01:17 monitor01 prometheus[1077]: Target is down
+Jul 19 12:01:18 monitor01 prometheus[1078]: Target recovered
+Jul 19 12:01:19 monitor01 grafana[1079]: User admin logged in
+Jul 19 12:01:20 monitor01 grafana[1080]: Dashboard updated
+
+Jul 19 12:01:21 switch01 snmpd[1081]: Link up on GigabitEthernet1/0/1
+Jul 19 12:01:22 switch01 snmpd[1082]: Link down on GigabitEthernet1/0/2
+Jul 19 12:01:23 switch01 lacpd[1083]: LACP negotiation successful
+Jul 19 12:01:24 router01 bgpd[1084]: BGP neighbor established
+Jul 19 12:01:25 router01 bgpd[1085]: BGP neighbor lost
+Jul 19 12:01:26 router01 ospfd[1086]: OSPF adjacency established
+Jul 19 12:01:27 router01 ospfd[1087]: OSPF adjacency lost
+Jul 19 12:01:28 router01 zebra[1088]: Route added
+Jul 19 12:01:29 router01 zebra[1089]: Route removed
+Jul 19 12:01:30 router01 keepalived[1090]: VRRP state MASTER
+
+Jul 19 12:01:31 app01 java[1091]: Application started
+Jul 19 12:01:32 app01 java[1092]: User login successful
+Jul 19 12:01:33 app01 java[1093]: User logout
+Jul 19 12:01:34 app01 java[1094]: Session expired
+Jul 19 12:01:35 app01 java[1095]: OutOfMemoryError detected
+Jul 19 12:01:36 app01 java[1096]: Garbage collection completed
+Jul 19 12:01:37 backup01 rsync[1097]: Backup completed successfully
+Jul 19 12:01:38 backup01 rsync[1098]: Backup failed
+Jul 19 12:01:39 backup01 tar[1099]: Archive created
+Jul 19 12:01:40 backup01 tar[1100]: Archive extracted

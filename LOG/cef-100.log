@@ -1,0 +1,100 @@
+CEF:0|Cisco|ASA|9.18|1001|Connection Built|3|src=192.168.1.10 dst=8.8.8.8 spt=51001 dpt=53 proto=UDP act=allow
+CEF:0|Cisco|ASA|9.18|1002|Connection Teardown|2|src=192.168.1.10 dst=8.8.4.4 spt=51002 dpt=53 proto=UDP act=allow
+CEF:0|Cisco|ASA|9.18|1003|Access Denied|7|src=10.0.0.15 dst=203.0.113.10 spt=45000 dpt=22 proto=TCP act=blocked
+CEF:0|Palo Alto Networks|NGFW|11.1|1004|Threat Detected|9|src=172.16.1.15 dst=185.10.10.10 spt=50001 dpt=443 proto=TCP act=blocked
+CEF:0|Palo Alto Networks|NGFW|11.1|1005|URL Filtering|6|src=172.16.1.20 dst=104.26.10.1 request=https://malware.test act=blocked
+CEF:0|Fortinet|FortiGate|7.4|1006|VPN Login Success|2|src=198.51.100.1 suser=alice outcome=Success
+CEF:0|Fortinet|FortiGate|7.4|1007|VPN Login Failed|6|src=198.51.100.2 suser=bob outcome=Failure
+CEF:0|Microsoft|Defender|2025|1008|Malware Detected|9|dhost=PC001 fileName=trojan.exe act=quarantine
+CEF:0|Microsoft|Defender|2025|1009|Exploit Blocked|10|dhost=PC002 fileName=exploit.docx act=blocked
+CEF:0|CrowdStrike|Falcon|7.5|1010|Process Injection|10|dhost=SRV001 suser=administrator act=blocked
+CEF:0|CrowdStrike|Falcon|7.5|1011|Credential Dumping|10|dhost=SRV002 suser=administrator act=blocked
+CEF:0|Linux|sshd|9.6|1012|SSH Login Failed|5|src=192.0.2.15 suser=root msg=Failed password
+CEF:0|Linux|sshd|9.6|1013|SSH Login Success|2|src=192.0.2.16 suser=admin msg=Accepted password
+CEF:0|Apache|ModSecurity|3.0|1014|SQL Injection|9|src=203.0.113.15 request=/login.php act=blocked
+CEF:0|Apache|ModSecurity|3.0|1015|Cross Site Scripting|8|src=203.0.113.16 request=/search act=blocked
+CEF:0|Suricata|IDS|7.0|1016|ET MALWARE Possible C2|9|src=10.10.1.10 dst=91.189.91.10 proto=TCP act=alert
+CEF:0|Suricata|IDS|7.0|1017|ET SCAN Nmap|6|src=10.10.1.11 dst=10.10.1.1 proto=TCP act=alert
+CEF:0|Okta|Identity Cloud|2025|1018|MFA Failed|6|src=203.0.113.50 suser=john outcome=Failure
+CEF:0|Okta|Identity Cloud|2025|1019|User Login|2|src=203.0.113.51 suser=sarah outcome=Success
+CEF:0|VMware|ESXi|8.0|1020|Host Configuration Changed|4|dhost=esxi01 suser=root
+CEF:0|AWS|CloudTrail|1.0|1021|Console Login|3|src=54.240.1.1 suser=cloudadmin outcome=Success
+CEF:0|AWS|CloudTrail|1.0|1022|Security Group Modified|5|suser=cloudadmin cs1=sg-123456
+CEF:0|Azure|AzureAD|2025|1023|Conditional Access Failure|6|src=40.90.1.5 suser=mark
+CEF:0|Azure|AzureAD|2025|1024|Password Reset|3|suser=linda outcome=Success
+CEF:0|Google|Workspace|2025|1025|User Login|2|src=34.120.0.1 suser=user1
+CEF:0|Google|Workspace|2025|1026|Drive File Shared|4|suser=user2 fileName=finance.xlsx
+CEF:0|Check Point|Firewall|R82|1027|Accept|2|src=10.0.1.10 dst=8.8.8.8 spt=52001 dpt=443
+CEF:0|Check Point|Firewall|R82|1028|Drop|7|src=10.0.1.20 dst=198.51.100.100 dpt=23
+CEF:0|Juniper|SRX|23.1|1029|Session Created|2|src=192.168.10.10 dst=1.1.1.1
+CEF:0|Juniper|SRX|23.1|1030|Session Denied|6|src=192.168.10.11 dst=203.0.113.5
+CEF:0|Sophos|XG Firewall|20|1031|Web Policy Block|6|src=10.1.1.10 request=http://bad.example
+CEF:0|Sophos|Intercept X|2025|1032|Ransomware Detected|10|dhost=PC100
+CEF:0|Trend Micro|Apex One|2025|1033|Virus Found|8|fileName=virus.exe
+CEF:0|Trend Micro|Apex One|2025|1034|Spyware Detected|7|fileName=spy.exe
+CEF:0|Bitdefender|GravityZone|2025|1035|Threat Blocked|9|dhost=LAPTOP01
+CEF:0|Bitdefender|GravityZone|2025|1036|Exploit Prevented|10|dhost=LAPTOP02
+CEF:0|McAfee|ENS|10.7|1037|Malware Found|9|fileName=test.exe
+CEF:0|McAfee|ENS|10.7|1038|Scan Completed|1|dhost=PC50
+CEF:0|Symantec|Endpoint Protection|14|1039|Virus Quarantined|8|fileName=worm.exe
+CEF:0|Symantec|Endpoint Protection|14|1040|Policy Updated|2|dhost=PC51
+CEF:0|F5|BIG-IP|17|1041|Virtual Server Down|5|dhost=lb01
+CEF:0|F5|BIG-IP|17|1042|Pool Member Up|1|dhost=lb01
+CEF:0|Zscaler|Internet Access|2025|1043|URL Blocked|5|request=https://example.bad
+CEF:0|Zscaler|Internet Access|2025|1044|SSL Inspection|2|src=10.10.10.20
+CEF:0|Imperva|WAF|14|1045|Bot Detected|6|src=203.0.113.90
+CEF:0|Imperva|WAF|14|1046|File Inclusion Attack|9|src=203.0.113.91
+CEF:0|Proofpoint|Email Protection|2025|1047|Spam Blocked|4|suser=user@example.com
+CEF:0|Proofpoint|Email Protection|2025|1048|Phishing Email|9|suser=user@example.com
+CEF:0|Mimecast|Email Security|2025|1049|Attachment Blocked|6|fileName=invoice.zip
+CEF:0|Mimecast|Email Security|2025|1050|Malicious URL|8|request=http://evil.test
+CEF:0|Splunk|Enterprise Security|8.2|1051|Correlation Search Triggered|5|cs1=BruteForce
+CEF:0|Elastic|Security|8.15|1052|Detection Rule Matched|6|cs1=PowerShell
+CEF:0|IBM|QRadar|7.5|1053|Offense Created|7|cs1=Multiple Login Failures
+CEF:0|ArcSight|ESM|7.8|1054|Active List Match|5|cs1=VIP User
+CEF:0|SentinelOne|Agent|24|1055|Behavioral AI Detection|9|dhost=PC70
+CEF:0|SentinelOne|Agent|24|1056|Rollback Performed|4|dhost=PC71
+CEF:0|Carbon Black|Cloud|2025|1057|Suspicious Binary|8|fileName=unknown.exe
+CEF:0|Carbon Black|Cloud|2025|1058|Policy Violation|5|dhost=PC72
+CEF:0|Rapid7|InsightIDR|2025|1059|Lateral Movement|9|src=10.2.2.2 dst=10.2.2.3
+CEF:0|Rapid7|InsightIDR|2025|1060|Privilege Escalation|8|suser=admin
+CEF:0|Cisco|Umbrella|2025|1061|DNS Request Blocked|5|src=192.168.2.20
+CEF:0|Cisco|Umbrella|2025|1062|Malicious Domain|8|request=bad-domain.test
+CEF:0|Tenable|Nessus|10|1063|Critical Vulnerability|7|dhost=server10
+CEF:0|Tenable|Nessus|10|1064|Scan Completed|1|dhost=server11
+CEF:0|Qualys|VMDR|2025|1065|New Vulnerability|6|dhost=db01
+CEF:0|Qualys|VMDR|2025|1066|Host Authenticated|2|dhost=db02
+CEF:0|Linux|auditd|3.1|1067|User Added|4|suser=root cs1=newuser
+CEF:0|Linux|auditd|3.1|1068|User Deleted|4|suser=root cs1=olduser
+CEF:0|Windows|Security|2022|1069|Account Locked|5|suser=jdoe
+CEF:0|Windows|Security|2022|1070|Password Changed|3|suser=asmith
+CEF:0|Windows|Security|2022|1071|New Service Installed|6|dhost=PC90
+CEF:0|Windows|Security|2022|1072|Audit Log Cleared|9|dhost=PC91
+CEF:0|Oracle|Database|19c|1073|Login Failed|5|suser=scott
+CEF:0|Oracle|Database|19c|1074|Privilege Granted|6|suser=sys
+CEF:0|MySQL|Server|8.4|1075|Access Denied|5|suser=root
+CEF:0|MySQL|Server|8.4|1076|Replication Started|2|dhost=dbslave
+CEF:0|PostgreSQL|Server|16|1077|Authentication Failed|5|suser=postgres
+CEF:0|PostgreSQL|Server|16|1078|Database Created|3|cs1=testdb
+CEF:0|Docker|Engine|28|1079|Container Started|2|cs1=nginx
+CEF:0|Docker|Engine|28|1080|Container Stopped|2|cs1=redis
+CEF:0|Kubernetes|API Server|1.31|1081|Pod Created|2|cs1=frontend
+CEF:0|Kubernetes|API Server|1.31|1082|Pod Deleted|2|cs1=backend
+CEF:0|Kubernetes|API Server|1.31|1083|RBAC Denied|6|suser=developer
+CEF:0|NGINX|Web Server|1.28|1084|404 Not Found|2|request=/admin
+CEF:0|NGINX|Web Server|1.28|1085|Rate Limit Triggered|4|src=198.51.100.100
+CEF:0|HAProxy|Load Balancer|3.0|1086|Backend Down|5|cs1=api01
+CEF:0|HAProxy|Load Balancer|3.0|1087|Backend Up|2|cs1=api02
+CEF:0|OpenVPN|Server|2.6|1088|Tunnel Established|2|src=203.0.113.15
+CEF:0|OpenVPN|Server|2.6|1089|TLS Authentication Failed|6|src=203.0.113.16
+CEF:0|WireGuard|VPN|1.0|1090|Peer Connected|2|src=198.18.1.1
+CEF:0|WireGuard|VPN|1.0|1091|Handshake Timeout|4|src=198.18.1.2
+CEF:0|ISC|BIND|9.20|1092|Zone Transfer|3|src=192.168.50.1
+CEF:0|ISC|BIND|9.20|1093|DNS Query|1|src=192.168.50.2 request=openai.com
+CEF:0|Snort|IDS|3.2|1094|Port Scan|6|src=10.20.20.20
+CEF:0|Snort|IDS|3.2|1095|Buffer Overflow Attempt|9|src=10.20.20.21
+CEF:0|SonicWall|Firewall|8.0|1096|Intrusion Prevented|8|src=172.31.1.1
+CEF:0|SonicWall|Firewall|8.0|1097|Connection Allowed|2|src=172.31.1.2
+CEF:0|Barracuda|Web Filter|12|1098|Category Blocked|4|request=http://games.example
+CEF:0|Barracuda|Web Filter|12|1099|Virus Download Blocked|9|fileName=payload.exe
+CEF:0|Generic|Security Appliance|1.0|1100|Heartbeat|0|msg=Device operational

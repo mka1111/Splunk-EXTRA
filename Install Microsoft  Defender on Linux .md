@@ -275,3 +275,99 @@ this means that is installed
 ```
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 ```
+
+
+
+
+centos 
+
+Prepare the Onboarding Package
+
+Navigate to the Microsoft Defender portal (Settings > Endpoints > Device management > Onboarding).
+
+Select Linux Server as the OS and Local Script as the deployment method.
+
+Download the WindowsDefenderATPOnboardingPackage.zip file.
+
+Extract the .zip file to get the onboarding script, typically named MicrosoftDefenderATPOnboardingLinuxServer.py.
+
+Download and Run the Installer Script
+
+Download the official installer script from Microsoft's GitHub repository.
+
+Make the script executable and run it, providing the path to your onboarding script.
+
+The --channel prod parameter installs the stable production version. You can also use insiders-fast or insiders-slow.
+
+The --pre-req flag checks system requirements before installation.
+
+
+
+
+
+
+# Download the installer script
+wget https://raw.githubusercontent.com/microsoft/mdatp-xplat/master/linux/installation/mde_installer.sh
+
+# Make it executable
+chmod +x mde_installer.sh
+
+# Run the installer
+sudo ./mde_installer.sh --install --onboard ./MicrosoftDefenderATPOnboardingLinuxServer.py --channel prod --pre-req
+
+
+
+
+Method 2: Manual Configuration
+
+
+his method involves manually adding the Microsoft repository and installing the package.
+
+Configure the Repository
+
+First, install yum-utils if it's not already present.
+
+Identify the correct repository URL for your CentOS version. Use the table below as a guide:
+
+CentOS Version	Repository URL
+CentOS 7.2 - 7.9	https://packages.microsoft.com/config/rhel/7/prod.repo
+CentOS 8.0 - 8.10	https://packages.microsoft.com/config/rhel/8/prod.repo
+CentOS 9.0 - 9.8	https://packages.microsoft.com/config/rhel/9/prod.repo
+Add the repository. For example, for CentOS 7:
+
+
+
+sudo yum-config-manager --add-repo=https://packages.microsoft.com/config/rhel/7/prod.repo
+
+
+Import the Microsoft GPG Key
+
+This step is necessary to validate the integrity of the packages.
+
+bash
+
+
+
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+
+Install the Agent
+
+Use yum to install the mdatp package
+
+
+
+sudo yum install mdatp
+
+
+Run the Onboarding Script
+
+Finally, execute the Python onboarding script you downloaded from the Defender portal. This registers the device with your tenant.
+
+
+
+sudo python3 MicrosoftDefenderATPOnboardingLinuxServer.py
+
+
+
+

@@ -9,6 +9,30 @@ C:\Windows\System32\Drivers\etc\
 - example
 - 192.168.1.100   www.mydomain.local
 
+# Windows Roles
+
+
+
+
+# Windows Event Log 
+Restart Windows Event Log service
+```
+Restart-Service -Name "EventLog"
+```
+Set the event forwarding policy
+```
+wevtutil set-log ForwardedEvents /enabled:true /retention:false /maxsize:1073741824
+```
+
+
+
+On collector - list all subscriptions
+wecutil es
+
+
+Get detailed subscription status
+wecutil gs "SourceInitiated_NoCert"
+
 
 
 # Firewall
@@ -39,7 +63,9 @@ winrm enumerate winrm/config/listener
 - winrm set winrm/config/service/auth @{Kerberos="false"}
 - winrm set winrm/config/service/auth @{Negotiate="false"}
  
-
+```
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "SOURCE_IP_OR_HOSTNAME" -Force
+```
 
 
 
@@ -149,7 +175,8 @@ Write-EventLog -LogName Security -Source "Microsoft-Windows-Security-Auditing" -
 
 
 
-
+Send specific event logs (example: System log, last 100 events)
+wevtutil qe System /c:100 /f:text /r:http://TARGET_IP:5985/wsman /u:DOMAIN\username /p:password
 
 
 

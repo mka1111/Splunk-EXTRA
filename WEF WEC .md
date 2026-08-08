@@ -1,7 +1,41 @@
 
 
 
-# Generate logs
+# Hostname
+
+```
+C:\Windows\System32\Drivers\etc\
+```
+- example
+- 192.168.1.100   www.mydomain.local
+
+
+
+# Firewall
+# WimRM
+Check WinRM configuration
+```
+winrm enumerate winrm/config/listener
+```
+
+# Keys
+Verify certificate mapping
+```
+Get-ChildItem -Path WSMan:\localhost\ClientCertificate
+```
+
+
+# EvenViewer
+
+Check subscription status
+```
+wecutil gr "WEF-Server-System-Logs"
+```
+
+View forwarded events
+```
+Get-WinEvent -LogName "ForwardedEvents" -MaxEvents 10
+```
 ## dffsd
 ### sss
 
@@ -15,14 +49,6 @@ wevtutil gl security
 ```
 
 
-
-### Hostname
-
-```
-C:\Windows\System32\Drivers\etc\
-```
-- example
-- 192.168.1.100   www.mydomain.local
 
 
 ### update xxxxx

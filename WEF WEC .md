@@ -1,5 +1,94 @@
 
 
+
+# Generate logs
+## dffsd
+### sss
+
+
+
+
+### Start Event logs
+
+```
+wevtutil gl security
+```
+
+
+
+### Hostname
+
+```
+C:\Windows\System32\Drivers\etc\
+```
+- example
+- 192.168.1.100   www.mydomain.local
+
+
+### update xxxxx
+
+```
+gpupdate /force 
+```
+
+### WINRM
+
+```
+ winrm quickconfig
+```
+```
+ winrm qc -q
+```
+```
+Enable-PSRemoting -Force
+
+```
+
+
+Delete winrm https
+```
+netsh http delete urlacl url=http://+:5985/wsman/
+```
+Test 
+Test-WSMan -ComputerName 172.31.24.110 -Port 5985
+
+Enable-PSRemoting -Force
+
+
+
+REM Create the registry key
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager" /f
+
+REM Add the subscription as a multi-string value
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager" /v "1" /t REG_MULTI_SZ /d "Server=http://172.31.24.110:5985/wsman/SubscriptionManager/WEC,Refresh=60" /f
+
+
+
+
+
+Tet-Item WSMan:\localhost\Client\TrustedHosts -Value "172.31.24.110" -Force
+
+netsh http add urlacl url=http://+:5985/wsman/ sddl=D:(A;;GX;;;S-1-5-80-569256582-2953403351-2909559716-1301513147-412116970)(A;;GX;;;S-1-5-80-4059739203-877974739-1245631912-527174227-2996563517)
+
+
+
+
+### Create EventLogs
+
+
+eventcreate /id 999 /t error /l application /d "This is a test event for WEF."
+
+
+Write-EventLog -LogName Security -Source "Microsoft-Windows-Security-Auditing" -EventId 4740 -EntryType Failure -Message @'
+
+
+
+
+
+
+
+
+
 Certificate Architecture Overview
 WEC Server: Needs SSL/Server Authentication certificate for HTTPS listener
 

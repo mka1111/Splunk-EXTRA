@@ -34,10 +34,10 @@ winrm enumerate winrm/config/listener
 
 ```
 
-winrm set winrm/config/client @{AllowUnencrypted="true"}
-winrm set winrm/config/client/auth @{Basic="true"}
-winrm set winrm/config/service/auth @{Kerberos="false"}
-winrm set winrm/config/service/auth @{Negotiate="false"}
+- winrm set winrm/config/client @{AllowUnencrypted="true"}
+- winrm set winrm/config/client/auth @{Basic="true"}
+- winrm set winrm/config/service/auth @{Kerberos="false"}
+- winrm set winrm/config/service/auth @{Negotiate="false"}
  
 
 

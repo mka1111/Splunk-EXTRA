@@ -12,11 +12,51 @@ C:\Windows\System32\Drivers\etc\
 
 
 # Firewall
+
+```
+ New-NetFirewallRule -DisplayName "WEF_HTTP_5985" -Direction Inbound -Protocol TCP -LocalPort 5985 -Action Allow
+```
+```
+ New-NetFirewallRule -DisplayName "WEF_HTTPS_5986" -Direction Inbound -Protocol TCP -LocalPort 5986 -Action Allow
+```
+
 # WimRM
+
+ ```
+sc stop winrm
+```
+```
+sc start winrm
+```
 Check WinRM configuration
 ```
 winrm enumerate winrm/config/listener
+
 ```
+
+winrm set winrm/config/client @{AllowUnencrypted="true"}
+winrm set winrm/config/client/auth @{Basic="true"}
+winrm set winrm/config/service/auth @{Kerberos="false"}
+winrm set winrm/config/service/auth @{Negotiate="false"}
+ 
+
+
+
+
+## RDP 
+
+```
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
+
+ ```
+ ```
+net start TermService
+ ```
+sc config TermService start=auto
+``` 
+ 
+
 
 # Keys
 Verify certificate mapping

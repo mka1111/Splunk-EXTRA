@@ -162,13 +162,43 @@ openssl genrsa -out ca.key 4096
 openssl req -x509 -new -nodes -key ca.key -days 3650 -out ca.crt -subj '/C=IR/ST=Cork/L=Cork/O=Smarttech247 /OU=Operations/CN=Operations Root CA'
 ```
 
+## Take sha1 Fingerprint
+```
+openssl x509 -in ca.crt -fingerprint -sha1 -noout | sed -e 's/\://g'
+```
+sha1 Fingerprint=5E6E23A55F321BB026590276BA89118AF17D77BD
 
+## Creating the server certificate
+The Common Name must be the FQDN (or IP address) of the server/collecor.
 
+```
+openssl req -new -newkey rsa:4096 -nodes -out server.csr -keyout server.key -subj '/C=IR/ST=Cork/L=Cork/O=Smarttech247/OU=Operations/CN=WEC-Marcin'
 
+```
 
+```
+openssl x509 -req -in server.csr -out server.crt -CA ca.crt -CAkey ca.key -CAcreateserial -extfile server-certopts.cnf -extensions req_ext -days 365
+```
 
+## Create the certificates for the clients:
 
+The Common Name must be the FQDN (or IP address) of the client.
 
+```
+openssl req -new -newkey rsa:4096 -nodes -out client.csr -keyout client.key -subj '/C=IR/ST=Cork/L=Cork/O=Smarttech247/OU=Operations/CN=WEF-Marcin,CN=192.168.222.144'
+
+```
+
+```
+openssl x509 -req -in client.csr -out client.crt -CA ca.crt -CAkey ca.key -CAcreateserial -extfile client-certopts.cnf -extensions req_ext -days 365
+```
+## Export the certificates of the clients to the format recognized by the Windows Certificate Manager tool
+
+```
+openssl pkcs12 -export  -inkey client.key -in client.crt -certfile ca.crt -out client.p12
+```
+
+password - marcin 
 
 
 

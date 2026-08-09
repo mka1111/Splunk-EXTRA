@@ -80,7 +80,7 @@ netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
 net start TermService
  ```
 sc config TermService start=auto
-``` 
+
  
 
 
@@ -89,6 +89,101 @@ Verify certificate mapping
 ```
 Get-ChildItem -Path WSMan:\localhost\ClientCertificate
 ```
+
+
+
+server-certopts.cnf
+
+```
+[req]
+default_bits = 4096
+default_md = sha256
+req_extensions = req_ext
+keyUsage = keyEncipherment,dataEncipherment
+basicConstraints = CA:FALSE
+distinguished_name = dn
+
+[ req_ext ]
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth,clientAuth
+
+[ alt_names ]
+DNS.1 = windowseventcollector.widgits
+DNS.2 = wec.widgits
+IP.1 = 10.64.10.2
+
+[dn]
+
+```
+
+If more needed. 
+
+DNS.1 = <1st DNS hostname of server (preferably FQDN)>
+...
+DNS.<N> = <Nth DNS hostname of server (preferably FQDN)>
+IP.1 = <1st IP of server>
+...
+IP.<N> = <Nth IP of server>
+
+
+
+client-certopts.cnf
+
+```
+[req]
+default_bits = 4096
+default_md = sha256
+req_extensions = req_ext
+keyUsage = keyEncipherment,dataEncipherment
+basicConstraints = CA:FALSE
+distinguished_name = dn
+
+[ req_ext ]
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth,clientAuth
+
+[ alt_names ]
+DNS.1 = windowsclient01.widgits
+DNS.2 = client01.widgits
+IP.1 = 10.64.10.11
+
+[dn]
+
+```
+
+## Generate the certificate authority (CA):
+
+
+```
+openssl genrsa -out ca.key 4096
+```
+
+```
+openssl req -x509 -new -nodes -key ca.key -days 3650 -out ca.crt -subj '/C=IR/ST=Cork/L=Cork/O=Smarttech247 /OU=Operations/CN=Operations Root CA'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # EvenViewer

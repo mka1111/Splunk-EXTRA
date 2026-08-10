@@ -151,3 +151,72 @@ powershell
 Get-WinEvent -LogName "Microsoft-Windows-Forwarding/Operational" -MaxEvents 20
 
 Let me know whether these machines are domain-joined or a workgroup — that changes step 7 (auth), and I can give the exact certificate-mapping commands if it's a workgroup setup.
+
+
+
+
+
+
+
+
+
+On WEC-Marcin (collector) — create local account + enable cert auth
+powershell
+net user WEFClient "P@ssw0rd123!" /add
+net localgroup Administrators WEFClient /add
+
+(Administrators is used here for simplicity in a lab; it can be scoped down later.)
+
+powershell
+winrm set winrm/config/service/auth '@{Certificate="true"}'
+On WEF-Marcin (source) — create a client authentication certificate
+powershell
+$clientCert = New-SelfSignedCertificate -DnsName "WEF-Marcin" -CertStoreLocation "Cert:\LocalMachine\My" -KeyUsage DigitalSignature,KeyEncipherment -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+$clientCert.Thumbprint
+
+Note the thumbprint it returns, then export the public cert:
+
+powershell
+Export-Certificate -Cert $clientCert -FilePath C:\wef-marcin-client.cer
+
+Copy wef-marcin-client.cer to WEC-Marcin (e.g. C:\wef-marcin-client.cer).
+
+Back on WEC-Marcin — trust the client cert and map it to the local account
+powershell
+Import-Certificate -FilePath C:\wef-marcin-client.cer -CertStoreLocation Cert:\LocalMachine\TrustedPeople
+powershell
+winrm create winrm/config/service/certmapping?Issuer=<WEF_CLIENT_CERT_THUMBPRINT>+Subject=WEF-Marcin+URI=* '@{Username="WEFClient";Password="P@ssw0rd123!"}'
+
+(Replace <WEF_CLIENT_CERT_THUMBPRINT> with the thumbprint from the New-SelfSignedCertificate step — since it's self-signed, Issuer = its own thumbprint.)
+
+Update the subscription to allow this cert (WEC-Marcin)
+
+Delete and recreate the subscription with AllowedSourceNonDomainComputers populated:
+
+powershell
+wecutil ds WEF-Marcin-Subscription
+
+Edit subscription.xml — replace the AllowedSourceDomainComputers line and empty AllowedSourceNonDomainComputers line with:
+
+xml
+<AllowedSourceNonDomainComputers>
+  <AllowedIssuerCAList>
+    <IssuerCA>WEF_CLIENT_CERT_THUMBPRINT</IssuerCA>
+  </AllowedIssuerCAList>
+</AllowedSourceNonDomainComputers>
+<AllowedSourceDomainComputers></AllowedSourceDomainComputers>
+
+Then recreate:
+
+powershell
+wecutil cs subscription.xml
+On WEF-Marcin — point SubscriptionManager at the collector with the cert
+powershell
+winrm set winrm/config/client/auth '@{Certificate="true"}'
+cmd
+reg add "HKLM\Software\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager" /v 1 /t REG_SZ /d "Server=https://WEC-Marcin:5986/wsman/SubscriptionManager/WEC,Refresh=60,IssuerCA=WEF_CLIENT_CERT_THUMBPRINT" /f
+powershell
+Restart-Service Winmgmt -Force
+Restart-Service WinRM
+
+Given how many placeholders (WEF_CLIENT_CERT_THUMBPRINT) need substituting, work through this in order and paste me the output of each step (especially the New-SelfSignedCertificate thumbprint) — I'll help fill in the exact values as you go rather than you tracking them all yourself.

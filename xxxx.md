@@ -227,3 +227,24 @@ Clock skew: certificate validation fails if the two machines' clocks drift too f
 Firewall: 5986 must be reachable inbound on WEC-Marcin from WEF-Marcin's IP.
 wecutil qc must run before creating the subscription, or wecutil cs will fail.
 If events don't appear, double-check the mapped local account (WEFClient) is actually in Remote Management Users — this is the most common permission miss.
+
+
+
+
+
+On WEF-Marcin:
+
+powershell
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEF-Marcin"} | Select Subject, Thumbprint, HasPrivateKey
+powershell
+Get-Content C:\Windows\System32\drivers\etc\hosts | Select-String "WEC-Marcin"
+
+On WEC-Marcin:
+
+powershell
+winrm enumerate winrm/config/listener
+
+Paste back what these three show — particularly HasPrivateKey (a client cert with no private key is a very common cause of exactly this Schannel error) and whether the listener's bound thumbprint actually matches your WEC-Marcin server cert rather than a different/auto-generated one.
+
+
+

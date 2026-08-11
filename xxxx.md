@@ -293,21 +293,51 @@ $serverCert.Thumbprint
 New-Item -Path WSMan:\localhost\Listener -Transport HTTPS -Address * `
   -CertificateThumbPrint $serverCert.Thumbprint -Force
 
-4. Verify:
+
+
+
+
+
+
+That's the key finding — there's only one cert with CN=WEC-Marcin in the store, and it's the wrong one. So my "duplicate cert" theory was wrong. The CA-signed server cert from Phase 1 either never got created successfully, got deleted at some point, or has a different Subject than we think.
+
+Let's find out what actually exists. Run on WEC-Marcin:
+
+1. List every certificate in the Personal store, not just ones named WEC-Marcin:
 
 powershell
+Get-ChildItem Cert:\LocalMachine\My | Format-List Subject, Thumbprint, Issuer, NotBefore
+
+Paste this — we need to see if the CA-signed server cert exists under a different subject, or if it's simply gone.
+
+2. Also check where that 5EEB6B2BE... cert came from — its Issuer will tell us if it's self-signed or something else entirely:
+
+powershell
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq "5EEB6B2BE33872893D1EA7628B61464DFB5B2B2B"} | Format-List Subject, Issuer, NotBefore
+
+If the Phase-1 server cert genuinely isn't there anymore, the cleanest path is to just recreate it now, confirm it lands correctly, and bind the listener to it in one go — run this as one block so we don't lose track between steps:
+
+powershell
+$rootCA = Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=Marcin-Lab-RootCA"}
+
+$serverCert = New-SelfSignedCertificate `
+  -Type Custom `
+  -Subject "CN=WEC-Marcin" `
+  -DnsName "WEC-Marcin","192.168.222.142" `
+  -KeyExportPolicy Exportable `
+  -KeyLength 2048 -HashAlgorithm SHA256 `
+  -NotAfter (Get-Date).AddYears(5) `
+  -CertStoreLocation Cert:\LocalMachine\My `
+  -Signer $rootCA `
+  -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
+
+$serverCert | Format-List Subject, Thumbprint, Issuer
+
+winrm delete winrm/config/Listener?Address=*+Transport=HTTPS
+
+New-Item -Path WSMan:\localhost\Listener -Transport HTTPS -Address * -CertificateThumbPrint $serverCert.Thumbprint -Force
+
 winrm enumerate winrm/config/listener
 
-The HTTPS listener's CertificateThumbprint should now match $serverCert.Thumbprint exactly.
-
-5. Then retry from WEF-Marcin — either wait for the 60-second refresh or force it:
-
-
-Server=https://WEC-Marcin:5986/wsman/SubscriptionManager/WEC,Refresh=60,IssuerCA=136079BA23F247CC2CD3D2185667CC112F884F13
-Click OK on
-
-powershell
-Restart-Service EventLog -Force
-
-Check Microsoft-Windows-Eventlog-ForwardingPlugin/Operational on WEF-Marcin again after that — it should either succeed (Event ID 100) or give a different, more specific error if there's still an issue.
+Important: if $rootCA at the top comes back empty (i.e., the Root CA's private key isn't in Cert:\LocalMachine\My anymore — it may only be in Cert:\LocalMachine\Root now without the private key), the -Signer step will fail. Paste back the output of step 1 first before running the recreate block, so we confirm the Root CA with private key is still available to sign a new cert.
 

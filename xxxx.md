@@ -302,6 +302,10 @@ The HTTPS listener's CertificateThumbprint should now match $serverCert.Thumbpri
 
 5. Then retry from WEF-Marcin — either wait for the 60-second refresh or force it:
 
+
+Server=https://WEC-Marcin:5986/wsman/SubscriptionManager/WEC,Refresh=60,IssuerCA=136079BA23F247CC2CD3D2185667CC112F884F13
+Click OK on
+
 powershell
 Restart-Service EventLog -Force
 

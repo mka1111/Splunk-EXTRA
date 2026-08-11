@@ -244,6 +244,24 @@ On WEC-Marcin:
 powershell
 winrm enumerate winrm/config/listener
 
+
+
+
+
+ix — run on WEC-Marcin:
+
+1. Confirm what that wrong thumbprint actually is (helps confirm the theory, optional):
+
+powershell
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq "5EEB6B2BE33872893D1EA7628B61464DFB5B2B2B"} | Select Subject, Issuer
+
+2. Delete the existing HTTPS listener:
+
+powershell
+Get-ChildItem WSMan:\localhost\Listener | Where-Object {$_.Keys -like "Transport=HTTPS"}
+
+Then remove it — easiest is via the listener's path shown above, or:
+
 Paste back what these three show — particularly HasPrivateKey (a client cert with no private key is a very common cause of exactly this Schannel error) and whether the listener's bound thumbprint actually matches your WEC-Marcin server cert rather than a different/auto-generated one.
 
 

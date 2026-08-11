@@ -266,3 +266,44 @@ Paste back what these three show — particularly HasPrivateKey (a client cert w
 
 
 
+
+Fix — run on WEC-Marcin:
+
+1. Confirm what that wrong thumbprint actually is (helps confirm the theory, optional):
+
+powershell
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Thumbprint -eq "5EEB6B2BE33872893D1EA7628B61464DFB5B2B2B"} | Select Subject, Issuer
+
+2. Delete the existing HTTPS listener:
+
+powershell
+Get-ChildItem WSMan:\localhost\Listener | Where-Object {$_.Keys -like "Transport=HTTPS"}
+
+Then remove it — easiest is via the listener's path shown above, or:
+
+powershell
+winrm delete winrm/config/Listener?Address=*+Transport=HTTPS
+
+3. Recreate it bound to the correct server cert:
+
+powershell
+$serverCert = Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEC-Marcin"}
+$serverCert.Thumbprint
+
+New-Item -Path WSMan:\localhost\Listener -Transport HTTPS -Address * `
+  -CertificateThumbPrint $serverCert.Thumbprint -Force
+
+4. Verify:
+
+powershell
+winrm enumerate winrm/config/listener
+
+The HTTPS listener's CertificateThumbprint should now match $serverCert.Thumbprint exactly.
+
+5. Then retry from WEF-Marcin — either wait for the 60-second refresh or force it:
+
+powershell
+Restart-Service EventLog -Force
+
+Check Microsoft-Windows-Eventlog-ForwardingPlugin/Operational on WEF-Marcin again after that — it should either succeed (Event ID 100) or give a different, more specific error if there's still an issue.
+

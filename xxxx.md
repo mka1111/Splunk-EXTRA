@@ -341,3 +341,36 @@ winrm enumerate winrm/config/listener
 
 Important: if $rootCA at the top comes back empty (i.e., the Root CA's private key isn't in Cert:\LocalMachine\My anymore — it may only be in Cert:\LocalMachine\Root now without the private key), the -Signer step will fail. Paste back the output of step 1 first before running the recreate block, so we confirm the Root CA with private key is still available to sign a new cert.
 
+Found it — and this is a good, concrete lead. Look at this line:
+
+Negotiate Client Certificate : Disabled
+
+This is the actual root cause. This is a setting on the underlying HTTP.SYS SSL binding, separate from WinRM's own Service\Auth\Certificate setting we configured earlier. If this is Disabled, the server never even asks the client for a certificate during the TLS handshake — the client cert sitting on WEF-Marcin never gets presented at all, which produces exactly this kind of generic Schannel failure (SEC_E_ILLEGAL_MESSAGE) rather than a clearer "cert rejected" error.
+
+This commonly happens when the listener was created via New-Item -Path WSMan:\localhost\Listener rather than winrm quickconfig -transport:https — the WinRM cmdlet doesn't always set this HTTP.SYS-level flag correctly.
+
+Fix — run on WEC-Marcin (use regular 64-bit PowerShell, not the (x86) one, if you can — worth switching now that we're modifying core SSL bindings):
+
+powershell
+netsh http delete sslcert ipport=0.0.0.0:5986
+
+netsh http add sslcert ipport=0.0.0.0:5986 `
+  certhash=5eeb6b2be33872893d1ea7628b61464dfb5b2b2b `
+  appid="{afebb9ad-9b97-4a91-9ab5-daf4d59122f6}" `
+  clientcertnegotiation=enable
+
+(I reused the same appid GUID shown in your netsh http show sslcert output, since that's WinRM's registered app ID for this binding.)
+
+Verify it took:
+
+powershell
+netsh http show sslcert ipport=0.0.0.0:5986
+
+Confirm Negotiate Client Certificate now shows Enabled.
+
+Then retry from WEF-Marcin:
+
+powershell
+Restart-Service EventLog -Force
+
+and check Microsoft-Windows-Eventlog-ForwardingPlugin/Operational for a fresh event — this should now either succeed (Event ID 100) or, if something else is still off, give a more specific error than the generic Schannel one we've been chasing.

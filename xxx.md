@@ -940,3 +940,31 @@ If you follow the sequence above, test each layer before moving to the next:
 10. Test event
 
 That approach makes it much easier to identify exactly where the configuration fails.
+
+
+
+
+
+-----------------------------
+---------------------------
+
+
+Run this on whichever machine you're on now (looks like the one that generated the certs — confirm which one this is):
+
+powershell
+Write-Host "--- WEF-Marcin cert issuer ---" -ForegroundColor Cyan
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEF-Marcin"} | Format-List Subject, Thumbprint, Issuer
+
+Write-Host "--- WEC-Marcin cert issuer ---" -ForegroundColor Cyan
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEC-Marcin"} | Format-List Subject, Thumbprint, Issuer
+
+Issuer won't show the thumbprint directly (just the CN), so also run this to map subject → thumbprint for both CA copies, so we can match them up:
+
+powershell
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=Marcin-WEF-Root-CA"} | Format-List Subject, Thumbprint, NotBefore, HasPrivateKey
+
+The NotBefore timestamps will tell us which one is older/newer, and HasPrivateKey will tell us which one can still sign anything if we need to reissue.
+
+My strong recommendation given the confusion: rather than untangle which duplicate signed what, it's cleaner to delete both root CA copies and every leaf cert, and regenerate everything from scratch in one clean pass on a single machine, since we know that process works — we've just had thumbprint bookkeeping errors, not a fundamental design problem. That avoids any chance of the two servers ending up trusting different CAs.
+
+Do you want to go that route (full clean regeneration), or would you prefer to first identify which CA copy is the "real" one and just clean up the stray duplicate? Either works, but a clean regeneration removes all ambiguity going forward.

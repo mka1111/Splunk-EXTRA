@@ -949,22 +949,63 @@ That approach makes it much easier to identify exactly where the configuration f
 ---------------------------
 
 
-Run this on whichever machine you're on now (looks like the one that generated the certs — confirm which one this is):
+Step 1 — Clean slate (run on WEC-Marcin)
+powershell
+# Remove old certs from My store
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -match "Marcin-WEF-Root-CA|WEC-Marcin|WEF-Marcin"} | Remove-Item -Force
+
+# Remove old CA from Trusted Root (both machines will need this cleared too)
+Get-ChildItem Cert:\LocalMachine\Root | Where-Object {$_.Subject -match "Marcin"} | Remove-Item -Force
+
+Also run on WEF-Marcin to clear its side:
 
 powershell
-Write-Host "--- WEF-Marcin cert issuer ---" -ForegroundColor Cyan
-Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEF-Marcin"} | Format-List Subject, Thumbprint, Issuer
-
-Write-Host "--- WEC-Marcin cert issuer ---" -ForegroundColor Cyan
-Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEC-Marcin"} | Format-List Subject, Thumbprint, Issuer
-
-Issuer won't show the thumbprint directly (just the CN), so also run this to map subject → thumbprint for both CA copies, so we can match them up:
-
+Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -match "Marcin-WEF-Root-CA|WEC-Marcin|WEF-Marcin"} | Remove-Item -Force
+Get-ChildItem Cert:\LocalMachine\Root | Where-Object {$_.Subject -match "Marcin"} | Remove-Item -Force
+Step 2 — Create everything fresh, in one block (run on WEC-Marcin only)
 powershell
-Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=Marcin-WEF-Root-CA"} | Format-List Subject, Thumbprint, NotBefore, HasPrivateKey
+New-Item -ItemType Directory -Path C:\Certs -Force | Out-Null
 
-The NotBefore timestamps will tell us which one is older/newer, and HasPrivateKey will tell us which one can still sign anything if we need to reissue.
+# Root CA
+$rootCA = New-SelfSignedCertificate `
+  -Type Custom -Subject "CN=Marcin-Lab-RootCA" `
+  -KeyUsage CertSign,CRLSign,DigitalSignature `
+  -KeyExportPolicy Exportable -KeyLength 2048 -HashAlgorithm SHA256 `
+  -NotAfter (Get-Date).AddYears(10) `
+  -CertStoreLocation Cert:\LocalMachine\My `
+  -TextExtension @("2.5.29.19={text}CA=1")
 
-My strong recommendation given the confusion: rather than untangle which duplicate signed what, it's cleaner to delete both root CA copies and every leaf cert, and regenerate everything from scratch in one clean pass on a single machine, since we know that process works — we've just had thumbprint bookkeeping errors, not a fundamental design problem. That avoids any chance of the two servers ending up trusting different CAs.
+# Server cert for WEC-Marcin
+$serverCert = New-SelfSignedCertificate `
+  -Type Custom -Subject "CN=WEC-Marcin" -DnsName "WEC-Marcin","192.168.222.142" `
+  -KeyExportPolicy Exportable -KeyLength 2048 -HashAlgorithm SHA256 `
+  -NotAfter (Get-Date).AddYears(5) `
+  -CertStoreLocation Cert:\LocalMachine\My -Signer $rootCA `
+  -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 
-Do you want to go that route (full clean regeneration), or would you prefer to first identify which CA copy is the "real" one and just clean up the stray duplicate? Either works, but a clean regeneration removes all ambiguity going forward.
+# Client cert for WEF-Marcin
+$clientCert = New-SelfSignedCertificate `
+  -Type Custom -Subject "CN=WEF-Marcin" `
+  -KeyExportPolicy Exportable -KeyLength 2048 -HashAlgorithm SHA256 `
+  -NotAfter (Get-Date).AddYears(5) `
+  -CertStoreLocation Cert:\LocalMachine\My -Signer $rootCA `
+  -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+
+# Export Root CA public cert
+Export-Certificate -Cert $rootCA -FilePath C:\Certs\RootCA.cer | Out-Null
+
+# Export client cert with private key for transfer to WEF-Marcin
+$pwd = ConvertTo-SecureString -String "TempP@ssw0rd!" -Force -AsPlainText
+Export-PfxCertificate -Cert $clientCert -FilePath C:\Certs\WEF-Marcin-client.pfx -Password $pwd | Out-Null
+
+# Import Root CA into this machine's own Trusted Root
+Import-Certificate -FilePath C:\Certs\RootCA.cer -CertStoreLocation Cert:\LocalMachine\Root | Out-Null
+
+Write-Host "`n=== SAVE THESE THUMBPRINTS ===" -ForegroundColor Yellow
+Write-Host "Root CA:    $($rootCA.Thumbprint)"
+Write-Host "Server cert: $($serverCert.Thumbprint)"
+Write-Host "Client cert: $($clientCert.Thumbprint)"
+
+Paste me that final === SAVE THESE THUMBPRINTS === output — I'll use those exact values to write you the complete, correct set of remaining commands (listener bind, certmapping, subscription XML, SubscriptionManager registry) with zero placeholders to fill in yourself, which is where the drift kept creeping in before.
+
+Then copy C:\Certs\RootCA.cer and C:\Certs\WEF-Marcin-client.pfx over to WEF-Marcin and hold off importing them until I send the next step — I'll bundle the import + everything else into one clean pass per machine.

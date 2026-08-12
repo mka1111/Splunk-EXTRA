@@ -100,6 +100,8 @@ netsh http cert negotiation fix
 Certmapping recreation — paste me the winrm enumerate winrm/config/service/certmapping output, this is the one that's been silently failing before, so I want to see it populated with the new thumbprints before we move to testing
 Subscription XML update + recreate
 
+Write-EventLog -LogName Application -Source "Application" -EventId 9999 -EntryType Information -Message "Test event for WEF forwarding validation"
+
 Once both sides are done, send me:
 
 The certmapping enumeration from WEC-Marcin

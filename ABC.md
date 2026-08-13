@@ -118,3 +118,20 @@ and we'll see where it stands.
 Get-ChildItem Cert:\LocalMachine\Root |
 Where-Object {$_.Subject -like "*Marcin-Lab-RootCA*"} |
 Select-Object Subject, Thumbprint, HasPrivateKey
+
+
+$sid = "S-1-5-20"
+$objSID = New-Object System.Security.Principal.SecurityIdentifier($sid)
+$objSID.Translate([System.Security.Principal.NTAccount]).Value
+
+For S-1-5-20, the result is:
+
+NT AUTHORITY\NETWORK SERVICE
+One-liner
+(New-Object System.Security.Principal.SecurityIdentifier("S-1-5-20")).Translate([System.Security.Principal.NTAccount]).Value
+CMD
+wmic useraccount where sid="S-1-5-20" get name,domain,sid
+
+For service accounts / well-known SIDs, PowerShell's SecurityIdentifier.Translate() method is generally more reliable than wmic.
+
+If you give me the SID you're checking, I can tell you exactly what account it represents.

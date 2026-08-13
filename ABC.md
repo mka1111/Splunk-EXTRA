@@ -108,3 +108,7 @@ The certmapping enumeration from WEC-Marcin
 The latest Microsoft-Windows-Eventlog-ForwardingPlugin/Operational event from WEF-Marcin after the restart
 
 and we'll see where it stands.
+
+Get-ChildItem Cert:\LocalMachine\Root |
+Where-Object {$_.Subject -like "*Marcin-Lab-RootCA*"} |
+Select-Object Subject, Thumbprint, HasPrivateKey

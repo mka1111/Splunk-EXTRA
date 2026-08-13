@@ -106,6 +106,12 @@ Once both sides are done, send me:
 
 The certmapping enumeration from WEC-Marcin
 The latest Microsoft-Windows-Eventlog-ForwardingPlugin/Operational event from WEF-Marcin after the restart
+Get-Acl "HKLM:\SOFTWARE\Microsoft\SystemCertificates\ROOT"
+
+Or more readable:
+
+(Get-Acl "HKLM:\SOFTWARE\Microsoft\SystemCertificates\ROOT").Access |
+Format-Table IdentityReference, RegistryRights, AccessControlType
 
 and we'll see where it stands.
 

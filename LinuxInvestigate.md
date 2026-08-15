@@ -67,6 +67,7 @@ ls -l /proc/1327/fd 2>/dev/null | head -30
 
 
 
+<img width="845" height="684" alt="image" src="https://github.com/user-attachments/assets/9383acf6-5898-474b-9267-09b3ffa9b20a" />
 
 
 

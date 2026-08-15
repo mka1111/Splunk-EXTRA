@@ -51,3 +51,22 @@ ls -l /proc/1327/fd 2>/dev/null | head -30
 
 <img width="913" height="394" alt="image" src="https://github.com/user-attachments/assets/61e9d485-7e65-4a04-94c8-040f9df1966c" />
 
+
+================
+=============
+
+<img width="947" height="286" alt="image" src="https://github.com/user-attachments/assets/05b7a031-f8c5-4468-958a-6ba703fb7310" />
+<img width="962" height="332" alt="image" src="https://github.com/user-attachments/assets/6d63f0a0-f572-4930-bbe3-ac74cdd8fc36" />
+
+
+
+<img width="783" height="843" alt="image" src="https://github.com/user-attachments/assets/511b4bf6-f10b-47a2-a657-36e2e36feee8" />
+
+
+<img width="801" height="690" alt="image" src="https://github.com/user-attachments/assets/71c568cd-89cc-4866-80db-5d5a7effd7af" />
+
+
+
+
+
+

@@ -32,3 +32,8 @@ Import-Certificate -FilePath C:\WEF-Certs\RootCA.cer -CertStoreLocation Cert:\Lo
 Import-PfxCertificate -FilePath C:\WEF-Certs\ClientCert.pfx -CertStoreLocation Cert:\LocalMachine\My -Password $pw
 
 mkdir C:\WEF-Certs first if it doesn't exist.
+
+
+
+================
+winrm set winrm/config/Listener?Address=*+Transport=HTTPS '@{CertificateThumbprint="B9844DEF377382027F2F646516803BEF714F22EE"}'

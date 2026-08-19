@@ -37,3 +37,10 @@ mkdir C:\WEF-Certs first if it doesn't exist.
 
 ================
 winrm set winrm/config/Listener?Address=*+Transport=HTTPS '@{CertificateThumbprint="B9844DEF377382027F2F646516803BEF714F22EE"}'
+
+
+$rootCAThumb = (Get-ChildItem Cert:\LocalMachine\Root | Where-Object {$_.Subject -like "*WEF-Lab-RootCA*"}).Thumbprint
+$rootCAThumb
+
+
+

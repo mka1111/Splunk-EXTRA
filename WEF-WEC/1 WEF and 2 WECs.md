@@ -1,3 +1,54 @@
+corrections:
+Delete the old mapping:
+
+powershell
+winrm delete "winrm/config/service/certmapping?Issuer=A907BFAD652039ACAF49A8C0C433F70D7289D128+Subject=CN=WEF-Marcin+URI=*"
+
+Confirm what's left:
+
+powershell
+Get-ChildItem WSMan:\localhost\ClientCertificate | Format-List *
+
+Remove any other stale entries the same way. Or via the WSMan provider, which is easier when you're not sure of the exact selectors:
+
+powershell
+Get-ChildItem WSMan:\localhost\ClientCertificate | Remove-Item -Recurse -Force
+
+Then create the new one:
+
+powershell
+winrm create "winrm/config/service/certmapping?Issuer=2CFBC70E7FCCF465F31E0F625C4219F0DE1BD6AA+Subject=CN=WEF-Marcin-1+URI=*" '@{UserName="WEFClient";Password="AnotherStr0ngP@ss!"}'
+
+Verify:
+
+powershell
+Get-ChildItem WSMan:\localhost\ClientCertificate | Format-List *
+
+Worth checking the rest of this box for the same staleness, since the mapping clearly isn't the only thing left over. The listener is probably still bound to the old server cert:
+
+powershell
+Get-ChildItem WSMan:\localhost\Listener | ForEach-Object { Get-Item "WSMan:\localhost\Listener\$($_.Name)\CertificateThumbprint" }
+
+If it shows an old thumbprint, rebind:
+
+powershell
+Set-Item -Path "WSMan:\localhost\Listener\<listener-name>\CertificateThumbprint" -Value "B320815C2A34A8AC14588F01C6E6A601A41CB490"
+Restart-Service WinRM
+
+And clear out the superseded certs so you don't bind the wrong one later:
+
+powershell
+Get-ChildItem Cert:\LocalMachine\My, Cert:\LocalMachine\Root, Cert:\LocalMachine\TrustedPeople |
+  Where-Object {$_.Subject -match "Marcin|WEF-Lab"} |
+  Select-Object PSParentPath, Subject, Thumbprint, NotAfter
+
+Anything with the old thumbprints can be removed with Remove-Item Cert:\LocalMachine\My\<thumbprint>.
+
+
+
+----------------------
+
+
 Consolidated build using the hosts file for the failover switch, since that's what you just confirmed. IPs: WEF-Marcin 192.168.222.100, WEC-Marcin-1 192.168.222.142 (active), WEC-Marcin-2 192.168.222.144 (standby).
 
 Step 1 — Generate all certificates (run once, on any one machine as Admin)

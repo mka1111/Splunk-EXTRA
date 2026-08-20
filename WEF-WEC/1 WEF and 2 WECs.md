@@ -142,6 +142,49 @@ Look for a new subscription/heartbeat entry referencing 192.168.222.144 shortly 
 
 Known limitations
 
+
+
+
+Good — all four generated. Substituting the real thumbprints into the remaining steps so you're not retyping them:
+
+WEC-Marcin-1 — listener + mapping
+powershell
+New-Item -Path WSMan:\localhost\Listener -Transport HTTPS -Address * -CertificateThumbPrint "A3F4CD6605259395E58A50D4D6936512FFC226CF" -Force
+Set-Item WSMan:\localhost\Service\Auth\Certificate -Value $true
+
+net user WEFClient "AnotherStr0ngP@ss!" /add
+net localgroup "Event Log Readers" WEFClient /add
+
+winrm create "winrm/config/service/certmapping?Issuer=A907BFAD652039ACAF49A8C0C433F70D7289D128+Subject=CN=WEF-Marcin+URI=*" '@{UserName="WEFClient";Password="AnotherStr0ngP@ss!"}'
+
+wecutil qc /q
+WEC-Marcin-2 — same, different thumbprint
+powershell
+New-Item -Path WSMan:\localhost\Listener -Transport HTTPS -Address * -CertificateThumbPrint "A7624FB4FB4778AF3BCFBFC0C9BE621D94AE4363" -Force
+Set-Item WSMan:\localhost\Service\Auth\Certificate -Value $true
+
+net user WEFClient "AnotherStr0ngP@ss!" /add
+net localgroup "Event Log Readers" WEFClient /add
+
+winrm create "winrm/config/service/certmapping?Issuer=A907BFAD652039ACAF49A8C0C433F70D7289D128+Subject=CN=WEF-Marcin+URI=*" '@{UserName="WEFClient";Password="AnotherStr0ngP@ss!"}'
+
+wecutil qc /q
+WEF-Marcin — SubscriptionManager and identify test
+powershell
+$key = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager"
+New-Item -Path $key -Force | Out-Null
+Set-ItemProperty -Path $key -Name "1" -Value "Server=HTTPS://WEC-Cluster:5986/wsman/SubscriptionManager/WEC,Refresh=60,IssuerCA=A907BFAD652039ACAF49A8C0C433F70D7289D128"
+Restart-Service Wecsvc
+powershell
+winrm identify -remote:https://WEC-Cluster:5986 -certificate:"5CCD3042628151B34DC0C94196A54FE45C73BE1E"
+
+One thing worth flagging on that WEF thumbprint — count the characters: 5CCD3042628151B34DC0C94196A54FE45C73BE1E is 41, one longer than a standard 40-character SHA1 thumbprint. Worth re-pulling it directly rather than retyping, to rule out a transcription slip:
+
+powershell
+(Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.Subject -eq "CN=WEF-Marcin"}).Thumbprint
+
+Run that on WEF-Marcin once the cert is imported there, and use whatever it actually prints in the certmapping and identify commands rather than the value transcribed from the screenshot.
+
 Manual failover, not automatic. Nothing detects collector 1 going down — you (or a script) has to flip the hosts entry.
 
 Bookmark gap. Collector 2 has never seen WEF-Marcin, so depending on ReadExistingEvents in the subscription, expect either a gap or a backlog on first connection.

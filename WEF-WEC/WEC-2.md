@@ -93,3 +93,31 @@ Get-Service Wecsvc, WinRM
 Two things worth noting. There's a stray HTTP listener on collector 1 that you may want to remove here too once the HTTPS one is up. And RootCA.key is sitting in this directory — the CA private key on a collector isn't where it belongs long-term.
 
 Once this is done, flip the hosts entry on WEF-Marcin-1 to .144, Clear-DnsClientCache, and wecutil gr ac here should show the source connecting.
+===================
+====================
+==============
+255 254 confirms it — UTF-16LE BOM, exactly as suspected. The 60 0 after it is < in UTF-16, so the content is fine; only the encoding is wrong.
+
+Convert it:
+
+powershell
+$x = Get-Content .\sub-export.xml -Raw
+[System.IO.File]::WriteAllText("$PWD\sub-export-utf8.xml", $x, (New-Object System.Text.UTF8Encoding($false)))
+
+Verify the BOM is gone — should now start with 60 63 83 109 (<?xml):
+
+powershell
+Get-Content .\sub-export-utf8.xml -Encoding Byte -TotalCount 4
+
+Then import:
+
+powershell
+wecutil cs .\sub-export-utf8.xml
+wecutil es
+
+For future exports, avoid the problem at source by using Out-File -Encoding utf8 rather than >:
+
+powershell
+wecutil gs ac /f:xml | Out-File -FilePath C:\share-Marcin\sub-export.xml -Encoding utf8
+
+If wecutil cs throws a different error after the encoding fix, that's progress — it means the parser is now reading the file and objecting to something in the content. Paste whatever it says and we'll work from there.

@@ -53,3 +53,17 @@ powershell
 Remove-Item -Path "WSMan:\localhost\Listener\Listener_1184937132" -Recurse -Force
 
 Next up is WEF-Marcin-1 — import its two certs, grant the key permission, add the hosts entry for WEC-Cluster pointing at .142, set the SubscriptionManager key, then test with winrm identify. That test is the real proof the collector side works, before you layer a subscription on top.
+
+===============
+============
+
+etsh http delete sslcert ipport=0.0.0.0:5986
+
+netsh http add sslcert ipport=0.0.0.0:5986 certhash=B320815C2A34A8AC14588F01C6E6A601A41CB490 appid="{afebb9ad-9b97-4a91-9ab5-daf4d59122f6}" certstorename=MY clientcertnegotiation=enable
+
+The appid comes straight from your output — that's WinRM's, so reuse it exactly.
+
+Verify:
+
+powershell
+netsh http show sslcert ipport=0.0.0.0:5986 | Select-String "Certificate Hash|Negotiate C

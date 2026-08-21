@@ -33,3 +33,23 @@ powershell
 Get-ChildItem WSMan:\localhost\Listener
 Get-ChildItem WSMan:\localhost\ClientCertificate | Format-List *
 Get-Service Wecsvc, WinRM
+
+===============
+===============
+
+
+Two things to confirm before moving on:
+
+powershell
+netsh http show sslcert ipport=0.0.0.0:5986
+
+Should show certificate hash B320815C2A34A8AC14588F01C6E6A601A41CB490. If it shows an old thumbprint, the HTTP.SYS binding didn't update with the listener and you'd need to fix it separately.
+
+And the NETWORK SERVICE private key permission, if you haven't done it yet — certlm.msc → Personal → WEC-Marcin-1 → All Tasks → Manage Private Keys → Add → NETWORK SERVICE → Read.
+
+Also worth noting there's an HTTP listener (Listener_1184937132) alongside the HTTPS one. That's the default WinRM listener on 5985, unencrypted. Not breaking anything, but since the whole point of this build is certificate-based TLS, it's an open unauthenticated-transport path you probably don't want:
+
+powershell
+Remove-Item -Path "WSMan:\localhost\Listener\Listener_1184937132" -Recurse -Force
+
+Next up is WEF-Marcin-1 — import its two certs, grant the key permission, add the hosts entry for WEC-Cluster pointing at .142, set the SubscriptionManager key, then test with winrm identify. That test is the real proof the collector side works, before you layer a subscription on top.

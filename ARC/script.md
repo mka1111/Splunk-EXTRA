@@ -28,9 +28,9 @@ try {
     $env:SUBSCRIPTION_ID = "758c2c4e-b705-4182-a153-f85a96c432f3";
     $env:RESOURCE_GROUP = "marcin-RG";
     $env:TENANT_ID = "841b6904-607d-48b2-861e-ab16e65bdc5b";
-    $env:LOCATION = "italynorth";
+    $env:LOCATION = "northeurope";
     $env:AUTH_TYPE = "token";
-    $env:CORRELATION_ID = "fc928529-44f6-4604-b646-899f74278d32";
+    $env:CORRELATION_ID = "9286dcf5-e62d-48c7-85bb-386c06126144";
     $env:CLOUD = "AzureCloud";
     
 

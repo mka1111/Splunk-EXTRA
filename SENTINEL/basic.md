@@ -1,5 +1,10 @@
 https://www.youtube.com/watch?v=QHEtAHGiCpc&t=1989s
 
+https://www.youtube.com/watch?v=Jqucy138ets&t=2417s
+
+
+<img width="1451" height="838" alt="image" src="https://github.com/user-attachments/assets/e68f0069-094d-4990-b0df-2a7bbde8b9f5" />
+
 
 
 

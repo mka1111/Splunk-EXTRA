@@ -148,3 +148,13 @@ you're submitting a JSON declaration (the RestApiPoller payload
 
 
 
+<img width="1865" height="985" alt="image" src="https://github.com/user-attachments/assets/2fada619-6434-4240-975a-b60fba621d9b" />
+
+
+# Where to put 
+<img width="533" height="289" alt="image" src="https://github.com/user-attachments/assets/ab5e5881-ef17-4104-8bf9-79b01807f93a" />
+
+
+
+
+

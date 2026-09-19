@@ -109,6 +109,8 @@ Data Collection Rule
 
 <img width="767" height="355" alt="image" src="https://github.com/user-attachments/assets/70a19f0a-76df-424e-a282-ec4e3c0d5f5d" />
 
+https://www.youtube.com/watch?v=9zKVoXB9RdI
+
 
 # CCF 
 ## what CCF actually is: a managed, serverless connector definition (JSON/ARM) that Microsoft's own infrastructure runs. There's no Function App, no Logic App, no VM for you to provision or pay compute for. That's the whole point of it versus the two legacy methods on your earlier slide.
@@ -122,4 +124,27 @@ No storage account for checkpointing (Microsoft manages connector state for you)
 
 
 you're submitting a JSON declaration (the RestApiPoller payload
+
+
+<img width="1790" height="929" alt="image" src="https://github.com/user-attachments/assets/e1b263fa-e4bf-4786-9c2f-e782fddaa1da" />
+
+
+<img width="1879" height="1039" alt="image" src="https://github.com/user-attachments/assets/c9ffa515-60d2-463d-93f2-d80224f97a26" />
+
+
+<img width="1891" height="1039" alt="image" src="https://github.com/user-attachments/assets/5a16af15-2715-4dfd-a17b-d0637ea83389" />
+
+<img width="1865" height="854" alt="image" src="https://github.com/user-attachments/assets/2adbb4cf-2527-46ab-b152-89125c3b71c2" />
+
+
+<img width="1855" height="1028" alt="image" src="https://github.com/user-attachments/assets/766fe0c3-22ef-40be-ae2c-cce8b364e588" />
+
+
+<img width="1795" height="791" alt="image" src="https://github.com/user-attachments/assets/642338b2-c9c3-458f-ae1d-ddadc72821d0" />
+
+
+
+<img width="1658" height="904" alt="image" src="https://github.com/user-attachments/assets/3c0dfd65-df86-4726-ac92-428c83459e16" />
+
+
 

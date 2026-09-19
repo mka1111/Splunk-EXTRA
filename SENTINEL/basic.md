@@ -88,6 +88,16 @@ Data Collection Rule
 <img width="1835" height="1014" alt="image" src="https://github.com/user-attachments/assets/1a6d735c-6492-4206-aed4-5d285bc7562f" />
 
 
+<img width="751" height="440" alt="image" src="https://github.com/user-attachments/assets/0d3d4a27-8e27-47b7-8770-419eca26f7ce" />
+
+
+<img width="801" height="781" alt="image" src="https://github.com/user-attachments/assets/af893083-1e96-4821-8af5-e2608515f82e" />
+
+
+<img width="741" height="291" alt="image" src="https://github.com/user-attachments/assets/0cc63dfc-1571-438e-b842-50b46323ea4d" />
+
+
+<img width="1575" height="722" alt="image" src="https://github.com/user-attachments/assets/3067178e-856b-49bb-8ac1-1b0c2100bd79" />
 
 
 

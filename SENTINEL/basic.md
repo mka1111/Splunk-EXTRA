@@ -110,3 +110,16 @@ Data Collection Rule
 <img width="767" height="355" alt="image" src="https://github.com/user-attachments/assets/70a19f0a-76df-424e-a282-ec4e3c0d5f5d" />
 
 
+# CCF 
+## what CCF actually is: a managed, serverless connector definition (JSON/ARM) that Microsoft's own infrastructure runs. There's no Function App, no Logic App, no VM for you to provision or pay compute for. That's the whole point of it versus the two legacy methods on your earlier slide.
+
+What CCF removes cost-wise, compared to your Function/Logic App builds:
+
+No Azure Functions execution or GB-second compute charges
+No Logic Apps per-action billing (the ~$190/month scenario from earlier)
+No VM/App Service Plan to host anything
+No storage account for checkpointing (Microsoft manages connector state for you)
+
+
+you're submitting a JSON declaration (the RestApiPoller payload
+

@@ -107,5 +107,6 @@ Data Collection Rule
 
 <img width="821" height="418" alt="image" src="https://github.com/user-attachments/assets/fcb764df-c73e-44a1-aa00-00aee7cff01e" />
 
+<img width="767" height="355" alt="image" src="https://github.com/user-attachments/assets/70a19f0a-76df-424e-a282-ec4e3c0d5f5d" />
 
 

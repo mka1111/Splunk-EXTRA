@@ -7,3 +7,6 @@ https://www.youtube.com/watch?v=hwxOrP5mNj4&t=834s
 
 
 https://docs.nxlog.co/agent/current/om/azuremonitor.html
+
+
+https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-ingestion-api-overview

@@ -47,6 +47,27 @@ https://youtu.be/94oalGr8RXc?t=1485
 
 <img width="911" height="508" alt="image" src="https://github.com/user-attachments/assets/7ea89155-a3e3-42d3-9747-f540f32202a1" />
 
+https://youtu.be/94oalGr8RXc?t=1870
+
+
+https://research.splunk.com/
+
+<img width="1243" height="646" alt="image" src="https://github.com/user-attachments/assets/a0ba5a75-a9d2-4a99-98ea-25bf328229df" />
+
+## How to calculate SCORE
+
+<img width="1822" height="950" alt="image" src="https://github.com/user-attachments/assets/ebce96c2-8815-4b61-b63e-c180daa31d9d" />
+
+
+
+## Machine learning has to use mltk toolkit to create its own model
+## we can configure the model to look into the Risk Index to learn patterns and behaviors and anomaly detections -> vonvert into notable events. 
+## 
+
+
+## 
+
+
 
 
 

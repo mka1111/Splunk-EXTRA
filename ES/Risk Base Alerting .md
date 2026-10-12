@@ -70,6 +70,12 @@ https://research.splunk.com/
 
 
 
+==========================
+
+https://www.youtube.com/watch?v=hvRxNZOZ5po
+
+<img width="984" height="551" alt="image" src="https://github.com/user-attachments/assets/8f925368-eba9-4d03-baa4-50dc4ab8deb5" />
+
 
 
 

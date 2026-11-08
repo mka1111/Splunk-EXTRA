@@ -20,8 +20,25 @@ aad-diag at 0.22 MB/s per partition has ample room, and its 30 throttles over 12
 
 <img width="896" height="314" alt="image" src="https://github.com/user-attachments/assets/47f10e3c-073a-4b54-8e92-40ff3914d498" />
 
+<img width="985" height="661" alt="image" src="https://github.com/user-attachments/assets/c099a275-b8b7-40ee-84bd-59e133d99b63" />
 
 
+
+```
+az monitor metrics list --resource <namespace-id> \
+  --metric IncomingBytes --aggregation Total --interval PT1M \
+  --start-time 2026-11-01T00:00:00Z \
+  --query "value[0].timeseries[0].data[].total" -o tsv \
+  | sort -n > /tmp/bytes.txt
+
+N=$(wc -l < /tmp/bytes.txt)
+for p in 50 95 99 100; do
+  LINE=$(( N * p / 100 )); [ "$LINE" -lt 1 ] && LINE=1
+  V=$(sed -n "${LINE}p" /tmp/bytes.txt)
+  echo "P$p: $(echo "scale=2; $V / 60 / 1048576" | bc) MB/s"
+done
+
+```
 
 ## In the Standard tier, the maximum number of partitions is 32.   if you have more than 32 **consumer** threads, they cannot process in parallel
 

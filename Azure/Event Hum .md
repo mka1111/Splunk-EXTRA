@@ -7,12 +7,18 @@ Throughput Units (Ingress Speed)
 - You should provision at least 2 TUs to give yourself a safety buffer,
 - Partitions are about parallelism, consumer scaling, and physical limitations, not just your total average throughput.
 - Ingress Ceiling
+-  ch partition caps at roughly 1 MB/s ingress regardless of how many TUs you’ve bought.
 -  
 
 
 
 - If your data has any micro-bursts, peak hours, or minor spikes (e.g., hitting 1.2 MB/sec for just a few seconds), Azure will immediately throw a ServerBusyException and reject your data.
 
+Each partition caps at roughly 1 MB/s ingress regardless of how many TUs the namespace holds. The Defender hub is averaging 0.95 MB/s per partition — 95% of the ceiling, sustained. Every burst above average throttles instantly. That’s the entire explanation for why Defender throttles ~100× more than aad-diag while carrying fewer messages.
+
+aad-diag at 0.22 MB/s per partition has ample room, and its 30 throttles over 12 hours are incidental — ignore them.
+
+<img width="896" height="314" alt="image" src="https://github.com/user-attachments/assets/47f10e3c-073a-4b54-8e92-40ff3914d498" />
 
 
 
@@ -20,6 +26,16 @@ Throughput Units (Ingress Speed)
 ## In the Standard tier, the maximum number of partitions is 32.   if you have more than 32 **consumer** threads, they cannot process in parallel
 
 
+
+## Actions
+Cutover: add a second Streaming API export in the Defender portal pointing at defender-v2, create a new Splunk input against it (you need a new input anyway — the hub name and consumer group fields aren’t editable after creation), confirm events are arriving on both, then delete the old export and input. Keeping both running briefly duplicates events for that window, which is cheaper than a gap.
+
+Migration sequence
+Build both new namespaces and hubs
+Add second Streaming API export in the Defender portal → new hub, and a second diagnostic setting for AAD → new hub
+Create new Splunk inputs against the new hubs (new inputs are required anyway — hub name and consumer group aren’t editable)
+Confirm events arriving on both old and new paths
+Remove the old exports, then the old Splunk inputs, then the old namespace
 
 
 

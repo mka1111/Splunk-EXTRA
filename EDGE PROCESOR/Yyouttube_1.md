@@ -45,6 +45,8 @@ $pipeline = | from $source
 
 <img width="1116" height="496" alt="image" src="https://github.com/user-attachments/assets/7351e0a1-e140-4f67-9ef5-1311c2a03f01" />
 
+<img width="1183" height="490" alt="image" src="https://github.com/user-attachments/assets/b24dcdd5-edcb-47b6-a2cd-e01d30c0f45d" />
+
 
 # Masking 
 
@@ -91,3 +93,8 @@ $pipeline = | from $source
 | where accountname!=NULL
 | into $destination;
 ```
+
+# Function
+
+<img width="1145" height="700" alt="image" src="https://github.com/user-attachments/assets/8d45ecb3-e11a-47b9-9226-c0431e29484e" />
+
